@@ -2305,12 +2305,12 @@
             this.currentPostCount = 0;
             this.renderDramasWithoutAnimation();
 
-            // Sync both search inputs
-            if (searchInput && headerSearchInput) {
-              const value = e.target.value;
-              if (e.target === searchInput && headerSearchInput.value !== value) {
+            // Sync both search inputs when both exist
+            const value = e.target.value;
+            if (searchInput && headerSearchInput && searchInput !== headerSearchInput) {
+              if (e.target === searchInput) {
                 headerSearchInput.value = value;
-              } else if (e.target === headerSearchInput && searchInput.value !== value) {
+              } else if (e.target === headerSearchInput) {
                 searchInput.value = value;
               }
             }
