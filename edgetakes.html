@@ -1779,6 +1779,14 @@
         hasAnimatedOnce: false,
         postsPerLoad: 10,
         currentPostCount: 0,
+        totalAdsInserted: 0,
+
+        // Ad frequency helper: show ad after every 2 posts
+        // Pattern: Post, Post, Ad, Post, Post, Ad, ...
+        shouldShowAdAfterPost(postIndex) {
+          // Show ad after every 2 posts: positions 1, 3, 5, 7, 9... (0-indexed)
+          return (postIndex + 1) % 2 === 0;
+        },
 
         init() {
           this.cacheElements();
@@ -1894,6 +1902,7 @@
           if (this.searchQuery) {
             dramasGrid.innerHTML = '';
             this.currentPostCount = 0;
+            this.totalAdsInserted = 0;
           }
 
           // Show initial posts or all if searching
@@ -1902,6 +1911,7 @@
 
           if (isInitial) {
             dramasGrid.innerHTML = '';
+            this.totalAdsInserted = 0;
           }
 
           if (filtered.length === 0) {
@@ -1915,16 +1925,6 @@
             return;
           }
 
-          // Ad frequency: 1 ad after every 2 posts
-          // Pattern: Post, Post, Ad, Post, Post, Ad, ...
-          // This means after positions 1, 3, 5, 7... (0-indexed: 1, 3, 5, 7)
-          // i.e., after post index 1 (2nd post), after index 3 (4th post), etc.
-          const shouldShowAdAfterPost = (postIndex) => {
-            // Show ad after every 2 posts: positions 1, 3, 5, 7, 9... (0-indexed)
-            return (postIndex + 1) % 2 === 0;
-          };
-
-          let adCounter = Math.floor(this.currentPostCount / 2);
           const startIndex = this.currentPostCount;
           const shouldAnimate = animate && !this.hasAnimatedOnce && isInitial;
 
@@ -1937,11 +1937,11 @@
             dramasGrid.appendChild(card);
 
             // Insert ad slot after every 2 posts (Post, Post, Ad pattern)
-            if (shouldShowAdAfterPost(i)) {
-              adCounter++;
+            if (this.shouldShowAdAfterPost(i)) {
+              this.totalAdsInserted++;
               const adSlot = document.createElement('div');
               adSlot.className = 'ad-slot-grid';
-              adSlot.innerHTML = `<div class="ad-slot-fixed" id="grid-ad-${adCounter}"></div>`;
+              adSlot.innerHTML = `<div class="ad-slot-fixed" id="grid-ad-${this.totalAdsInserted}"></div>`;
               dramasGrid.appendChild(adSlot);
             }
           }
