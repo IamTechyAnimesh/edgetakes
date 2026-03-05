@@ -183,9 +183,8 @@
     img { max-width: 100%; height: auto; display: block; }
     button { font-family: inherit; cursor: pointer; border: none; background: none; }
 
-    .container { width: 100%; max-width: 1320px; margin: 0 auto; padding: 0 16px; }
-    @media (min-width: 768px) { .container { padding: 0 24px; } }
-    @media (min-width: 1200px) { .container { padding: 0 32px; } }
+    .container { width: 100%; max-width: 1320px; margin: 0 auto; padding: 0 var(--space-md); }
+    @media (min-width: 768px) { .container { padding: 0 var(--space-lg); } }
 
     /* AD CONTAINERS */
     .ad-container {
@@ -571,7 +570,6 @@
 
     .dramas-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: var(--space-lg); }
     @media (min-width: 1024px) { .dramas-grid { grid-template-columns: repeat(3, 1fr); gap: var(--space-lg); } }
-    @media (min-width: 1280px) { .dramas-grid { grid-template-columns: repeat(3, 1fr); } }
 
     /* DRAMA CARD */
     .drama-card {
