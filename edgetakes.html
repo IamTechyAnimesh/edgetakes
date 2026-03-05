@@ -2227,7 +2227,7 @@
           throw new Error('Comments are full. Maximum 500 reached.');
         }
 
-        const { collection, addDoc, doc, updateDoc, increment, runTransaction } = await import('https://www.gstatic.com/firebasejs/12.6.0/firebase-firestore.js');
+        const { collection, doc, runTransaction } = await import('https://www.gstatic.com/firebasejs/12.6.0/firebase-firestore.js');
 
         await runTransaction(this.state.db, async (transaction) => {
           const metaRef = doc(this.state.db, 'meta', 'comments');
@@ -2245,8 +2245,10 @@
             createdAt: Date.now()
           });
 
+          // Use direct count value to match Firebase security rules
+          // Rule expects: request.resource.data.count == resource.data.count + 1
           if (metaSnap.exists()) {
-            transaction.update(metaRef, { count: increment(1) });
+            transaction.update(metaRef, { count: currentCount + 1 });
           } else {
             transaction.set(metaRef, { count: 1 });
           }
