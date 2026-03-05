@@ -456,6 +456,9 @@
     .mode-btn.active { background: var(--accent-primary); color: var(--bg-primary); box-shadow: 0 0 6px var(--accent-glow); }
     [data-theme="light"] .mode-btn.active { color: #fff; }
 
+    /* Header Search - Hidden on mobile, visible on desktop */
+    .header-search-desktop { display: none; }
+
     /* FEATURED SECTION */
     .featured-section { padding: var(--space-lg) 0 var(--space-md); }
 
@@ -986,6 +989,274 @@
     @media (prefers-reduced-motion: reduce) {
       *, *::before, *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; }
     }
+
+    /* ============================================
+       DESKTOP ENHANCEMENTS (1024px+)
+       These styles enhance the desktop experience
+       without affecting mobile layout
+       ============================================ */
+
+    /* 1. Container Width Improvements */
+    @media (min-width: 1024px) {
+      .container { max-width: 1200px; }
+    }
+    @media (min-width: 1280px) {
+      .container { max-width: 1320px; }
+    }
+    @media (min-width: 1600px) {
+      .container { max-width: 1440px; }
+    }
+
+    /* 2. Grid Improvements - More columns on larger screens */
+    @media (min-width: 1024px) {
+      .dramas-grid { grid-template-columns: repeat(3, 1fr); gap: 20px; }
+    }
+    @media (min-width: 1280px) {
+      .dramas-grid { grid-template-columns: repeat(4, 1fr); gap: 22px; }
+    }
+    @media (min-width: 1600px) {
+      .dramas-grid { grid-template-columns: repeat(5, 1fr); gap: 24px; }
+    }
+
+    /* 3. Featured Section - Cinematic Streaming Platform Hero */
+    @media (min-width: 1024px) {
+      .featured-section { padding: var(--space-xl) 0 var(--space-lg); }
+
+      .featured-card {
+        max-width: 100%;
+        border-radius: var(--radius-xl);
+      }
+
+      .featured-thumbnail { aspect-ratio: 2.8/1; }
+
+      .featured-overlay {
+        background: linear-gradient(90deg, rgba(10, 10, 15, 0.88) 0%, rgba(10, 10, 15, 0.6) 35%, rgba(10, 10, 15, 0.2) 60%, transparent 100%);
+        padding: 48px 56px;
+      }
+
+      .featured-badge {
+        font-size: 0.72rem;
+        padding: 6px 14px;
+        margin-bottom: 14px;
+      }
+
+      .featured-title {
+        font-size: clamp(2rem, 3.5vw, 2.8rem);
+        max-width: 520px;
+        margin-bottom: 12px;
+      }
+
+      .featured-meta { margin-bottom: 14px; }
+
+      .featured-tag {
+        font-size: 0.82rem;
+        padding: 5px 12px;
+      }
+
+      .featured-trust { margin-bottom: 18px; }
+
+      .trust-signal {
+        font-size: 0.78rem;
+        padding: 6px 14px;
+      }
+
+      .featured-cta {
+        font-size: 1.05rem;
+        padding: 16px 36px;
+        min-height: 54px;
+      }
+    }
+
+    @media (min-width: 1280px) {
+      .featured-thumbnail { aspect-ratio: 2.6/1; }
+
+      .featured-overlay { padding: 56px 72px; }
+
+      .featured-title {
+        font-size: clamp(2.2rem, 4vw, 3rem);
+        max-width: 580px;
+      }
+
+      .featured-cta {
+        font-size: 1.1rem;
+        padding: 18px 42px;
+        min-height: 58px;
+      }
+    }
+
+    /* 4. Desktop Header - Balanced Layout with Centered Search */
+    @media (min-width: 1024px) {
+      .header { padding: 14px 0; }
+
+      .header-inner {
+        display: grid;
+        grid-template-columns: auto 1fr auto;
+        align-items: center;
+        gap: 24px;
+      }
+
+      /* Desktop Header Search Bar */
+      .header-search-desktop {
+        display: flex;
+        justify-content: center;
+        max-width: 480px;
+        margin: 0 auto;
+      }
+
+      .header-search-desktop .search-box {
+        width: 100%;
+        border-radius: var(--radius-full);
+        padding: 2px;
+      }
+
+      .header-search-desktop .search-input {
+        padding: 10px 16px 10px 44px;
+        font-size: 0.9rem;
+      }
+
+      .header-search-desktop .search-icon {
+        left: 16px;
+        font-size: 1rem;
+      }
+
+      .logo-icon { width: 40px; height: 40px; font-size: 20px; border-radius: 10px; }
+      .logo-text { font-size: 1.45rem; }
+
+      .header-actions { gap: 12px; }
+
+      .mode-btn { width: 34px; height: 34px; font-size: 14px; }
+      .instagram-link { width: 40px; height: 40px; border-radius: 10px; }
+      .instagram-link svg { width: 20px; height: 20px; }
+    }
+
+    /* Hide mobile search section on desktop when header search exists */
+    @media (min-width: 1024px) {
+      .search-section.desktop-hidden { display: none; }
+    }
+
+    /* 5. Premium Card Hover Effects - Netflix/A24 Style */
+    @media (min-width: 1024px) {
+      .drama-card {
+        transition: transform 0.35s var(--ease-out), box-shadow 0.35s var(--ease-out);
+      }
+
+      .drama-card:hover {
+        transform: translateY(-8px) scale(1.02);
+        box-shadow:
+          var(--shadow-lg),
+          0 20px 40px rgba(0, 0, 0, 0.15),
+          0 0 60px var(--accent-glow);
+        z-index: 10;
+      }
+
+      .drama-thumbnail img {
+        transition: transform 0.5s var(--ease-out);
+      }
+
+      .drama-card:hover .drama-thumbnail img {
+        transform: scale(1.08);
+      }
+
+      /* Subtle glow on card hover */
+      .drama-card::before {
+        content: '';
+        position: absolute;
+        inset: -2px;
+        border-radius: calc(var(--radius-lg) + 2px);
+        background: linear-gradient(135deg, var(--accent-primary), var(--fire));
+        opacity: 0;
+        z-index: -1;
+        transition: opacity 0.35s var(--ease-out);
+      }
+
+      .drama-card:hover::before {
+        opacity: 0.15;
+      }
+
+      /* Enhanced thumbnail overlay on hover */
+      .drama-thumbnail::after {
+        transition: background 0.35s var(--ease-out);
+      }
+
+      .drama-card:hover .drama-thumbnail::after {
+        background: linear-gradient(0deg, rgba(0, 0, 0, 0.6) 0%, rgba(0, 0, 0, 0.15) 40%, rgba(0, 0, 0, 0) 100%);
+      }
+    }
+
+    /* 6. Section Spacing - More Breathable Desktop Layout */
+    @media (min-width: 1024px) {
+      .dramas-section { padding: var(--space-md) 0 var(--space-xl); }
+      .comments-section { padding: var(--space-lg) 0 var(--space-xl); }
+      .search-section { padding: var(--space-md) 0 var(--space-lg); }
+
+      .section-header { margin-bottom: var(--space-lg); }
+      .section-title { font-size: 1.4rem; }
+      .section-title::before { width: 4px; height: 26px; }
+
+      .monetization-slot { margin: var(--space-lg) auto; }
+    }
+
+    @media (min-width: 1280px) {
+      .featured-section { padding: 48px 0 36px; }
+      .dramas-section { padding: var(--space-lg) 0 60px; }
+
+      .section-title { font-size: 1.5rem; }
+    }
+
+    /* 7. Comments Section Desktop */
+    @media (min-width: 1024px) {
+      .comments-container {
+        max-width: 720px;
+        padding: 32px;
+      }
+
+      .comments-title { font-size: 1.25rem; }
+    }
+
+    /* 8. Footer Desktop */
+    @media (min-width: 1024px) {
+      .footer { padding: 48px 0 32px; margin-top: var(--space-xl); }
+      .footer-links { gap: 28px; }
+      .footer-links a { font-size: 0.88rem; }
+    }
+
+    /* 9. Featured Card Hover Enhancement */
+    @media (min-width: 1024px) {
+      .featured-card {
+        transition: transform 0.4s var(--ease-out), box-shadow 0.4s var(--ease-out);
+      }
+
+      .featured-card:hover {
+        transform: translateY(-6px);
+        box-shadow:
+          var(--shadow-lg),
+          0 25px 50px rgba(0, 0, 0, 0.2),
+          0 0 80px var(--fire-glow);
+      }
+
+      .featured-thumbnail img {
+        transition: transform 0.6s var(--ease-out);
+      }
+
+      .featured-card:hover .featured-thumbnail img {
+        transform: scale(1.04);
+      }
+    }
+
+    /* 10. Hide FAB search on desktop (search in header) */
+    @media (min-width: 1024px) {
+      #fab-search { display: none; }
+    }
+
+    /* 11. Ad containers desktop adjustments */
+    @media (min-width: 1024px) {
+      .header-ad-wrapper { max-width: 1320px; padding: var(--space-sm) 20px; }
+      .monetization-slot { max-width: 970px; min-height: 90px; }
+    }
+
+    @media (min-width: 1280px) {
+      .header-ad-wrapper { max-width: 1440px; }
+    }
   </style>
 </head>
 <body>
@@ -996,6 +1267,16 @@
         <span class="logo-icon">🎬</span>
         <span class="logo-text">edgetakes</span>
       </a>
+
+      <!-- Desktop Search Bar (centered in header) -->
+      <div class="header-search-desktop">
+        <div class="search-box">
+          <input type="search" class="search-input" id="header-search-input"
+                 placeholder="Search dramas..."
+                 aria-label="Search dramas" autocomplete="off">
+          <span class="search-icon" aria-hidden="true">🔍</span>
+        </div>
+      </div>
 
       <div class="header-actions">
         <div class="mode-toggle" role="group" aria-label="Theme switcher">
@@ -1810,6 +2091,7 @@
             dramasGrid: Utils.$('#dramas-grid'),
             dramaCount: Utils.$('#drama-count'),
             searchInput: Utils.$('#search-input'),
+            headerSearchInput: Utils.$('#header-search-input'),
             header: Utils.$('.header'),
             fabSearch: Utils.$('#fab-search'),
             showMoreBtn: Utils.$('#show-more-posts')
@@ -2015,16 +2297,27 @@
         },
 
         initSearch() {
-          const { searchInput } = this.elements;
-          if (!searchInput) return;
+          const { searchInput, headerSearchInput } = this.elements;
+          if (!searchInput && !headerSearchInput) return;
 
           const handleSearch = Utils.debounce((e) => {
             this.searchQuery = e.target.value.trim();
             this.currentPostCount = 0;
             this.renderDramasWithoutAnimation();
+
+            // Sync both search inputs
+            if (searchInput && headerSearchInput) {
+              const value = e.target.value;
+              if (e.target === searchInput && headerSearchInput.value !== value) {
+                headerSearchInput.value = value;
+              } else if (e.target === headerSearchInput && searchInput.value !== value) {
+                searchInput.value = value;
+              }
+            }
           }, 250);
 
-          searchInput.addEventListener('input', handleSearch);
+          if (searchInput) searchInput.addEventListener('input', handleSearch);
+          if (headerSearchInput) headerSearchInput.addEventListener('input', handleSearch);
         },
 
         initShowMoreButton() {
