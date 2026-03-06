@@ -2873,11 +2873,15 @@
         posts: [],
         isLoaded: false,
 
+        // JSON data source URLs - configurable
+        jsonSources: {
+          github: 'https://raw.githubusercontent.com/IamTechyAnimesh/edgetakes/main/edgetakes.posts.json',
+          local: 'edgetakes.posts.json'
+        },
+
         // Fetch posts from external JSON file (GitHub or local fallback)
         async fetchPosts() {
-          // Primary: GitHub raw URL, Fallback: local file
-          const GITHUB_JSON_URL = 'https://raw.githubusercontent.com/IamTechyAnimesh/edgetakes/main/edgetakes.posts.json';
-          const LOCAL_JSON_URL = 'edgetakes.posts.json';
+          const { github: GITHUB_JSON_URL, local: LOCAL_JSON_URL } = this.jsonSources;
           
           let data = null;
           
@@ -2886,23 +2890,23 @@
             const response = await fetch(GITHUB_JSON_URL);
             if (response.ok) {
               data = await response.json();
-              console.log('Posts loaded from GitHub');
+              console.log('Posts loaded from GitHub:', GITHUB_JSON_URL);
             }
           } catch (e) {
-            console.warn('GitHub fetch failed:', e.message);
+            console.warn(`GitHub fetch failed (${GITHUB_JSON_URL}):`, e.message);
           }
           
           // If GitHub failed, try local fallback
           if (!data) {
             try {
-              console.log('Trying local fallback...');
+              console.log('Trying local fallback:', LOCAL_JSON_URL);
               const response = await fetch(LOCAL_JSON_URL);
               if (response.ok) {
                 data = await response.json();
                 console.log('Posts loaded from local fallback');
               }
             } catch (e) {
-              console.error('Local fallback also failed:', e.message);
+              console.error(`Local fallback failed (${LOCAL_JSON_URL}):`, e.message);
             }
           }
           
