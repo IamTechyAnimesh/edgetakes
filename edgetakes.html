@@ -1846,6 +1846,508 @@
       opacity: 1;
       transform: scale(1.02);
     }
+
+    /* ============================================
+       MOBILE UI STABILITY FIXES
+       Comprehensive responsive design for all breakpoints
+       Mobile: 320px-768px | Tablet: 768px-1024px | Desktop: 1024px+
+       ============================================ */
+
+    /* 38. Mobile Base Fixes (320px-767px) */
+    @media (max-width: 767px) {
+      /* Prevent horizontal overflow */
+      html, body {
+        overflow-x: hidden;
+        width: 100%;
+      }
+
+      /* Container safe padding for small screens */
+      .container {
+        padding: 0 12px;
+        max-width: 100%;
+      }
+
+      /* Header mobile fixes */
+      .header-inner {
+        gap: 8px;
+        min-height: 48px;
+      }
+
+      .logo {
+        flex-shrink: 0;
+        min-width: 0;
+      }
+
+      .logo-text {
+        font-size: 1.1rem;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+
+      .header-actions {
+        gap: 6px;
+        flex-shrink: 0;
+      }
+
+      .mode-toggle {
+        padding: 2px;
+        gap: 1px;
+      }
+
+      .mode-btn {
+        width: 28px;
+        height: 28px;
+        font-size: 12px;
+      }
+
+      .instagram-link {
+        width: 32px;
+        height: 32px;
+        min-width: 32px;
+      }
+
+      /* Featured section mobile stability */
+      .featured-section {
+        padding: var(--space-sm) 0;
+      }
+
+      .featured-card {
+        border-radius: var(--radius-md);
+      }
+
+      .featured-thumbnail {
+        aspect-ratio: 16/10;
+        min-height: 200px;
+      }
+
+      .featured-overlay {
+        padding: 16px;
+        background: linear-gradient(0deg, rgba(10, 10, 15, 0.9) 0%, rgba(10, 10, 15, 0.5) 50%, rgba(10, 10, 15, 0.2) 100%);
+      }
+
+      .featured-badge {
+        font-size: 0.6rem;
+        padding: 4px 8px;
+        margin-bottom: 8px;
+      }
+
+      .featured-title {
+        font-size: clamp(1.1rem, 5vw, 1.5rem);
+        line-height: 1.25;
+        margin-bottom: 8px;
+        max-width: 100%;
+        display: -webkit-box;
+        -webkit-line-clamp: 3;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+      }
+
+      .featured-meta {
+        gap: 6px;
+        margin-bottom: 8px;
+      }
+
+      .featured-tag {
+        font-size: 0.68rem;
+        padding: 3px 6px;
+      }
+
+      .featured-trust {
+        gap: 6px;
+        margin-bottom: 10px;
+        flex-wrap: wrap;
+      }
+
+      .trust-signal {
+        font-size: 0.65rem;
+        padding: 3px 8px;
+      }
+
+      .featured-cta {
+        padding: 12px 20px;
+        font-size: 0.85rem;
+        min-height: 42px;
+        width: 100%;
+        justify-content: center;
+      }
+
+      /* Search section mobile */
+      .search-section {
+        padding: var(--space-sm) 0;
+      }
+
+      .search-wrapper {
+        max-width: 100%;
+      }
+
+      .search-input {
+        padding: 12px 16px 12px 42px;
+        font-size: 0.9rem;
+      }
+
+      .search-icon {
+        left: 14px;
+        font-size: 1rem;
+      }
+
+      /* Drama grid mobile - single column on very small screens */
+      .dramas-grid {
+        grid-template-columns: 1fr;
+        gap: 12px;
+      }
+
+      /* Drama card mobile fixes */
+      .drama-card {
+        border-radius: var(--radius-md);
+      }
+
+      .drama-thumbnail {
+        aspect-ratio: 16/9;
+        border-radius: var(--radius-md) var(--radius-md) 0 0;
+      }
+
+      .emotion-tag {
+        font-size: 0.62rem;
+        padding: 4px 8px;
+        top: 8px;
+        left: 8px;
+        max-width: 70%;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+
+      .drama-rating {
+        font-size: 0.7rem;
+        padding: 3px 6px;
+        top: 8px;
+        right: 8px;
+      }
+
+      .drama-content {
+        padding: 10px 12px 12px;
+      }
+
+      .drama-title {
+        font-size: 0.9rem;
+        line-height: 1.3;
+        margin-bottom: 8px;
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+      }
+
+      .drama-cta {
+        padding: 10px 16px;
+        font-size: 0.8rem;
+        min-height: 38px;
+      }
+
+      .trending-badge {
+        font-size: 0.55rem;
+        padding: 4px 8px;
+        letter-spacing: 0.5px;
+      }
+
+      /* Section header mobile */
+      .section-header {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: var(--space-sm);
+      }
+
+      .section-title {
+        font-size: 1.1rem;
+        gap: 8px;
+      }
+
+      .section-title::before {
+        width: 3px;
+        height: 18px;
+      }
+
+      .drama-count {
+        font-size: 0.72rem;
+        padding: 4px 10px;
+      }
+
+      /* Show more button mobile */
+      .show-more-btn {
+        width: 100%;
+        padding: 12px 24px;
+        font-size: 0.9rem;
+        margin-top: var(--space-md);
+      }
+
+      /* Comments section mobile */
+      .comments-container {
+        padding: 16px;
+        border-radius: var(--radius-md);
+      }
+
+      .comments-title {
+        font-size: 1rem;
+      }
+
+      .comments-subtitle {
+        font-size: 0.75rem;
+      }
+
+      .form-input, .form-textarea {
+        padding: 10px 12px;
+        font-size: 0.85rem;
+      }
+
+      .submit-btn {
+        padding: 10px 20px;
+        font-size: 0.85rem;
+        min-height: 40px;
+      }
+
+      .comment-item {
+        padding: 10px;
+        gap: 8px;
+      }
+
+      .comment-avatar {
+        width: 32px;
+        height: 32px;
+        font-size: 0.75rem;
+      }
+
+      .comment-name {
+        font-size: 0.8rem;
+      }
+
+      .comment-time {
+        font-size: 0.65rem;
+      }
+
+      .comment-text {
+        font-size: 0.78rem;
+      }
+
+      /* Footer mobile */
+      .footer {
+        padding: 24px 0 20px;
+      }
+
+      .footer-links {
+        flex-wrap: wrap;
+        gap: 12px;
+        justify-content: center;
+      }
+
+      .footer-links a {
+        font-size: 0.78rem;
+      }
+
+      .copyright {
+        font-size: 0.68rem;
+      }
+
+      /* FABs mobile */
+      .fab, .fab-insta {
+        width: 42px;
+        height: 42px;
+        font-size: 1rem;
+      }
+
+      .fab { bottom: 14px; right: 14px; }
+      .fab-insta { bottom: 68px; right: 14px; }
+
+      /* Ad containers mobile */
+      .monetization-slot {
+        min-height: 60px;
+        margin: var(--space-sm) auto;
+      }
+
+      .ad-slot-grid {
+        padding: var(--space-xs) 0;
+        margin-bottom: var(--space-sm);
+      }
+
+      .ad-slot-fixed {
+        min-height: 200px;
+      }
+
+      .header-ad {
+        min-height: 50px;
+      }
+
+      /* Sticky ad mobile */
+      .ad-sticky {
+        height: 50px;
+        min-height: 50px;
+        padding: 0 42px 0 10px;
+      }
+
+      .ad-sticky .ad-close {
+        width: 24px;
+        height: 24px;
+        right: 8px;
+        font-size: 11px;
+      }
+    }
+
+    /* 39. Very Small Screens (320px-400px) */
+    @media (max-width: 400px) {
+      .container {
+        padding: 0 10px;
+      }
+
+      .logo-icon {
+        width: 28px;
+        height: 28px;
+        font-size: 14px;
+      }
+
+      .logo-text {
+        font-size: 1rem;
+      }
+
+      .mode-btn {
+        width: 26px;
+        height: 26px;
+        font-size: 11px;
+      }
+
+      .instagram-link {
+        width: 28px;
+        height: 28px;
+        min-width: 28px;
+      }
+
+      .featured-title {
+        font-size: 1rem;
+      }
+
+      .drama-title {
+        font-size: 0.85rem;
+      }
+
+      .emotion-tag {
+        font-size: 0.58rem;
+        max-width: 65%;
+      }
+
+      .section-title {
+        font-size: 1rem;
+      }
+    }
+
+    /* 40. Tablet Breakpoint (768px-1023px) */
+    @media (min-width: 768px) and (max-width: 1023px) {
+      .container {
+        padding: 0 20px;
+      }
+
+      .dramas-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 16px;
+      }
+
+      .featured-thumbnail {
+        aspect-ratio: 2.2/1;
+      }
+
+      .featured-overlay {
+        padding: 24px;
+      }
+
+      .featured-title {
+        font-size: 1.8rem;
+        max-width: 400px;
+      }
+
+      .featured-cta {
+        width: auto;
+      }
+
+      .section-title {
+        font-size: 1.3rem;
+      }
+
+      .drama-content {
+        padding: 12px 14px 14px;
+      }
+
+      .drama-title {
+        font-size: 0.95rem;
+      }
+
+      .comments-container {
+        max-width: 600px;
+        padding: 24px;
+      }
+    }
+
+    /* 41. Fluid Typography */
+    html {
+      font-size: clamp(14px, 3.5vw, 16px);
+    }
+
+    @media (min-width: 768px) {
+      html {
+        font-size: 16px;
+      }
+    }
+
+    /* 42. Image Aspect Ratio & Object Fit */
+    .drama-thumbnail img,
+    .featured-thumbnail img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+    }
+
+    /* 43. Prevent Text Overflow */
+    .drama-title,
+    .featured-title,
+    .comment-text,
+    .emotion-tag {
+      word-wrap: break-word;
+      overflow-wrap: break-word;
+      hyphens: auto;
+    }
+
+    /* 44. Safe Area Insets for Notched Devices */
+    @supports (padding: env(safe-area-inset-bottom)) {
+      body.has-sticky-ad {
+        padding-bottom: calc(var(--ad-sticky-height-mobile, 50px) + env(safe-area-inset-bottom) + 12px);
+      }
+
+      .ad-sticky {
+        padding-bottom: env(safe-area-inset-bottom);
+      }
+
+      .fab, .fab-insta {
+        bottom: calc(14px + env(safe-area-inset-bottom));
+      }
+    }
+
+    /* 45. Loading State */
+    .drama-card.loading {
+      pointer-events: none;
+      opacity: 0.7;
+    }
+
+    .drama-card.loading::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+      animation: shimmer 1.5s infinite;
+    }
+
+    @keyframes shimmer {
+      0% { transform: translateX(-100%); }
+      100% { transform: translateX(100%); }
+    }
   </style>
 </head>
 <body>
@@ -2072,6 +2574,10 @@
     (function() {
       'use strict';
 
+      // ============================================
+      // UTILITIES MODULE
+      // Core helper functions used throughout the app
+      // ============================================
       const Utils = {
         debounce(fn, delay) {
           let timer;
@@ -2092,10 +2598,29 @@
           };
         },
 
+        // Sanitize HTML to prevent XSS attacks
         escapeHtml(text) {
           if (!text) return '';
           const map = { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' };
           return String(text).replace(/[&<>"']/g, m => map[m]);
+        },
+
+        // Validate URL to prevent malformed URLs
+        isValidUrl(url) {
+          if (!url || typeof url !== 'string') return false;
+          try {
+            const parsed = new URL(url, window.location.origin);
+            return ['http:', 'https:'].includes(parsed.protocol) || url.endsWith('.html');
+          } catch {
+            return false;
+          }
+        },
+
+        // Sanitize URL for safe usage
+        sanitizeUrl(url) {
+          if (!url) return '#';
+          if (this.isValidUrl(url)) return url;
+          return '#';
         },
 
         $(selector, parent = document) {
@@ -2134,27 +2659,27 @@
         }
       };
 
-      // Per-Post Two Link System - Link Manager
+      // ============================================
+      // LINK MANAGER MODULE
+      // Handles two-link watch button system with localStorage persistence
+      // First click: Adsterra SmartLink
+      // Second click: Official streaming link
+      // ============================================
       const LinkManager = {
-        // Track active countdowns per slug to prevent double-click spam
         activeCountdowns: new Set(),
 
-        // Generate localStorage key per post
         getClickKey(slug) {
           return `click_${slug}`;
         },
 
-        // Check if user has clicked this specific post before
         hasClickedBefore(slug) {
           return localStorage.getItem(this.getClickKey(slug)) === '1';
         },
 
-        // Mark this post as clicked
         setClicked(slug) {
           localStorage.setItem(this.getClickKey(slug), '1');
         },
 
-        // Start countdown inside the button element
         startButtonCountdown(button, seconds, callback, originalText) {
           if (!button) {
             callback();
@@ -2162,14 +2687,11 @@
           }
 
           let remaining = seconds;
-
-          // Mark button as counting down
           button.classList.add('counting-down');
           button.textContent = `Preparing... ${remaining}`;
 
           const interval = setInterval(() => {
             remaining--;
-            
             if (remaining > 0) {
               button.textContent = `Preparing... ${remaining}`;
             } else {
@@ -2181,263 +2703,127 @@
           }, 1000);
         },
 
-        // Handle click for drama cards - passes button element
         handleClick(drama, buttonElement) {
-          if (!drama || !drama.watchLinks || drama.watchLinks.length < 2) {
-            return;
-          }
+          if (!drama || !drama.watchLinks || drama.watchLinks.length < 2) return;
 
           const slug = drama.slug;
+          if (this.activeCountdowns.has(slug)) return;
 
-          // Prevent double-click spam during countdown
-          if (this.activeCountdowns.has(slug)) {
-            return;
-          }
+          const link0 = Utils.sanitizeUrl(drama.watchLinks[0]);
+          const link1 = Utils.sanitizeUrl(drama.watchLinks[1]);
 
           if (!this.hasClickedBefore(slug)) {
-            // First click for this specific post - open monetized link
-            window.open(drama.watchLinks[0], '_blank');
+            window.open(link0, '_blank');
             this.setClicked(slug);
           } else {
-            // Second click for same post - show countdown then open real link
             this.activeCountdowns.add(slug);
-            
             this.startButtonCountdown(buttonElement, 5, () => {
-              window.open(drama.watchLinks[1], '_blank');
+              window.open(link1, '_blank');
               this.activeCountdowns.delete(slug);
             }, '▶ Watch Now');
           }
         },
 
-        // Handle click for featured card - different button text
         handleFeaturedClick(drama, buttonElement) {
-          if (!drama || !drama.watchLinks || drama.watchLinks.length < 2) {
-            return;
-          }
+          if (!drama || !drama.watchLinks || drama.watchLinks.length < 2) return;
 
           const slug = drama.slug;
+          if (this.activeCountdowns.has(slug)) return;
 
-          // Prevent double-click spam during countdown
-          if (this.activeCountdowns.has(slug)) {
-            return;
-          }
+          const link0 = Utils.sanitizeUrl(drama.watchLinks[0]);
+          const link1 = Utils.sanitizeUrl(drama.watchLinks[1]);
 
           if (!this.hasClickedBefore(slug)) {
-            // First click - open monetized link
-            window.open(drama.watchLinks[0], '_blank');
+            window.open(link0, '_blank');
             this.setClicked(slug);
           } else {
-            // Second click - show countdown then open real link
             this.activeCountdowns.add(slug);
-            
             this.startButtonCountdown(buttonElement, 5, () => {
-              window.open(drama.watchLinks[1], '_blank');
+              window.open(link1, '_blank');
               this.activeCountdowns.delete(slug);
             }, "▶ Watch Why Everyone's Talking");
           }
         }
       };
 
-      const ContentData = {
+      // ============================================
+      // POSTS MANAGER MODULE
+      // Handles fetching, storing, and querying posts from JSON
+      // ============================================
+      const PostsManager = {
         config: {
-          featuredSlug: null,
-          featuredHeadline: "She waited 18 years. Now it's their turn to suffer."
+          featuredHeadline: "She waited 18 years. Now it's their turn to suffer.",
+          postsPerLoad: 20,
+          adFrequency: 2
         },
+        posts: [],
+        isLoaded: false,
 
-        dramas: [
-          {
-            slug: 'the-glory',
-            title: 'The Glory',
-            emotionTag: '😈 Revenge served cold',
-            emotionClass: 'revenge',
-            category: 'revenge',
-            rating: '9.4',
-            isTrending: false,
-            thumbnail: 'https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?w=480&h=300&fit=crop',
-            watchLinks: [
-              'https://www.effectivegatecpm.com/g2cr05tw?key=d8be84b0e258e182bc2821ea7849147b',
-              'https://www.effectivegatecpm.com/g2cr05tw?key=d8be84b0e258e182bc2821ea7849147b'
-            ],
-            description: 'A woman dedicates her life to getting revenge on her childhood bullies.'
-          },
-          {
-            slug: 'weak-hero-class-1',
-            title: 'Weak Hero Class 1',
-            emotionTag: '🔥 School fights went too far',
-            emotionClass: 'fire',
-            category: 'fighting',
-            rating: '9.2',
-            isTrending: true,
-            thumbnail: 'https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=480&h=300&fit=crop',
-            watchLinks: [
-              'https://www.effectivegatecpm.com/g2cr05tw?key=d8be84b0e258e182bc2821ea7849147b',
-              'https://www.effectivegatecpm.com/g2cr05tw?key=d8be84b0e258e182bc2821ea7849147b'
-            ],
-            description: 'A brilliant student fights back against school bullies with strategic thinking.'
-          },
-          {
-            slug: 'goblin',
-            title: 'Goblin',
-            emotionTag: '😭 I wasn\'t ready for this',
-            emotionClass: 'sad',
-            category: 'emotional',
-            rating: '9.5',
-            isTrending: false,
-            thumbnail: 'https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?w=480&h=300&fit=crop',
-            watchLinks: [
-              'https://www.effectivegatecpm.com/g2cr05tw?key=d8be84b0e258e182bc2821ea7849147b',
-              'goblin.html'
-            ],
-            description: 'An immortal goblin searches for his bride who can end his immortal life.'
-          },
-          {
-            slug: 'crash-landing-on-you',
-            title: 'Crash Landing on You',
-            emotionTag: '😭 Love that hurts',
-            emotionClass: 'sad',
-            category: 'emotional',
-            rating: '9.3',
-            isTrending: false,
-            thumbnail: 'https://images.unsplash.com/photo-1532375810709-75b1da00537c?w=480&h=300&fit=crop',
-            watchLinks: [
-              'https://www.effectivegatecpm.com/g2cr05tw?key=d8be84b0e258e182bc2821ea7849147b',
-              'https://www.effectivegatecpm.com/g2cr05tw?key=d8be84b0e258e182bc2821ea7849147b'
-            ],
-            description: 'A South Korean heiress crash-lands in North Korea and falls for an officer.'
-          },
-          {
-            slug: 'all-of-us-are-dead',
-            title: 'All of Us Are Dead',
-            emotionTag: '🔥 Classroom turned violent',
-            emotionClass: 'fire',
-            category: 'fighting',
-            rating: '8.8',
-            isTrending: false,
-            thumbnail: 'https://images.unsplash.com/photo-1616530940355-351fabd9524b?w=480&h=300&fit=crop',
-            watchLinks: [
-              'https://www.effectivegatecpm.com/g2cr05tw?key=d8be84b0e258e182bc2821ea7849147b',
-              'all-of-us-are-dead.html'
-            ],
-            description: 'A zombie virus spreads through a high school, trapping students inside.'
-          },
-          {
-            slug: 'the-world-of-the-married',
-            title: 'The World of the Married',
-            emotionTag: '💔 Toxic but addictive',
-            emotionClass: 'heart',
-            category: 'romance',
-            rating: '9.1',
-            isTrending: false,
-            thumbnail: 'https://images.unsplash.com/photo-1516589091380-5d8e87df6999?w=480&h=300&fit=crop',
-            watchLinks: [
-              'https://www.effectivegatecpm.com/g2cr05tw?key=d8be84b0e258e182bc2821ea7849147b',
-              'world-of-married.html'
-            ],
-            description: 'A woman discovers her husband\'s affair and seeks revenge.'
-          },
-          {
-            slug: 'business-proposal',
-            title: 'Business Proposal',
-            emotionTag: '😂 Pure chaos',
-            emotionClass: 'chaos',
-            category: 'comedy',
-            rating: '8.7',
-            isTrending: false,
-            thumbnail: 'https://images.unsplash.com/photo-1580489944761-15a19d654956?w=480&h=300&fit=crop',
-            watchLinks: [
-              'https://www.effectivegatecpm.com/g2cr05tw?key=d8be84b0e258e182bc2821ea7849147b',
-              'business-proposal.html'
-            ],
-            description: 'An employee goes on a blind date for her friend and meets her CEO.'
-          },
-          {
-            slug: 'vincenzo',
-            title: 'Vincenzo',
-            emotionTag: '🧠 Every move planned',
-            emotionClass: 'mind',
-            category: 'mindgames',
-            rating: '9.0',
-            isTrending: false,
-            thumbnail: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=480&h=300&fit=crop',
-            watchLinks: [
-              'https://www.effectivegatecpm.com/g2cr05tw?key=d8be84b0e258e182bc2821ea7849147b',
-              'vincenzo.html'
-            ],
-            description: 'An Italian mafia lawyer returns to Korea to retrieve gold hidden in a building.'
-          },
-          {
-            slug: 'nevertheless',
-            title: 'Nevertheless',
-            emotionTag: '💔 Red flag but irresistible',
-            emotionClass: 'heart',
-            category: 'romance',
-            rating: '7.9',
-            isTrending: false,
-            thumbnail: 'https://images.unsplash.com/photo-1518199266791-5375a83190b7?w=480&h=300&fit=crop',
-            watchLinks: [
-              'https://www.effectivegatecpm.com/g2cr05tw?key=d8be84b0e258e182bc2821ea7849147b',
-              'nevertheless.html'
-            ],
-            description: 'An art student falls for a charming but emotionally unavailable classmate.'
-          },
-          {
-            slug: 'itaewon-class',
-            title: 'Itaewon Class',
-            emotionTag: '😈 They underestimated him',
-            emotionClass: 'revenge',
-            category: 'revenge',
-            rating: '8.9',
-            isTrending: false,
-            thumbnail: 'https://images.unsplash.com/photo-1517841905240-472988babdf9?w=480&h=300&fit=crop',
-            watchLinks: [
-              'https://www.effectivegatecpm.com/g2cr05tw?key=d8be84b0e258e182bc2821ea7849147b',
-              'itaewon-class.html'
-            ],
-            description: 'An ex-convict opens a bar to take down the food empire that ruined his family.'
-          },
-          {
-            slug: 'true-beauty',
-            title: 'True Beauty',
-            emotionTag: '😂 No brain just fun',
-            emotionClass: 'chaos',
-            category: 'comedy',
-            rating: '8.2',
-            isTrending: false,
-            thumbnail: 'https://images.unsplash.com/photo-1524504388940-b1c1722653e1?w=480&h=300&fit=crop',
-            watchLinks: [
-              'https://www.effectivegatecpm.com/g2cr05tw?key=d8be84b0e258e182bc2821ea7849147b',
-              'true-beauty.html'
-            ],
-            description: 'A girl transforms herself with makeup and becomes the school goddess.'
-          },
-          {
-            slug: 'penthouse',
-            title: 'Penthouse',
-            emotionTag: '🧠 Mind games & betrayal',
-            emotionClass: 'mind',
-            category: 'mindgames',
-            rating: '8.6',
-            isTrending: false,
-            thumbnail: 'https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=480&h=300&fit=crop',
-            watchLinks: [
-              'https://www.effectivegatecpm.com/g2cr05tw?key=d8be84b0e258e182bc2821ea7849147b',
-              'penthouse.html'
-            ],
-            description: 'Rich families in a luxury penthouse fight for status and power.'
+        // Fetch posts from external JSON file
+        async fetchPosts() {
+          try {
+            const response = await fetch('edgetakes.posts.json');
+            if (!response.ok) throw new Error('Failed to fetch posts');
+            const data = await response.json();
+            
+            // Apply config
+            if (data.config) {
+              this.config = { ...this.config, ...data.config };
+            }
+            
+            // Sanitize and validate posts
+            this.posts = this.sanitizePosts(data.posts || []);
+            
+            // Reverse order: last in JSON = newest = first displayed
+            this.posts.reverse();
+            
+            this.isLoaded = true;
+            return this.posts;
+          } catch (error) {
+            console.error('Error fetching posts:', error);
+            this.isLoaded = false;
+            return [];
           }
-        ],
-
-        getTrendingDrama() {
-          const trendingDramas = this.dramas.filter(d => d.isTrending === true);
-          if (!trendingDramas.length) return null;
-          return trendingDramas.reduce((best, d) =>
-            parseFloat(d.rating) > parseFloat(best.rating) ? d : best
-          , trendingDramas[0]);
         },
 
+        // Sanitize all post fields
+        sanitizePosts(posts) {
+          return posts.map(post => ({
+            slug: Utils.escapeHtml(post.slug || ''),
+            title: Utils.escapeHtml(post.title || 'Untitled'),
+            emotionTag: Utils.escapeHtml(post.emotionTag || ''),
+            emotionClass: Utils.escapeHtml(post.emotionClass || ''),
+            category: Utils.escapeHtml(post.category || ''),
+            rating: Utils.escapeHtml(post.rating || '0'),
+            isTrending: Boolean(post.isTrending),
+            thumbnail: Utils.sanitizeUrl(post.thumbnail) || this.getFallbackImage(),
+            watchLinks: (post.watchLinks || []).map(url => Utils.sanitizeUrl(url)),
+            description: Utils.escapeHtml(post.description || '')
+          })).filter(post => post.slug && post.title);
+        },
+
+        getFallbackImage() {
+          return 'data:image/svg+xml,' + encodeURIComponent(
+            '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 300">' +
+            '<rect fill="#1a1a2e" width="480" height="300"/>' +
+            '<text x="240" y="150" text-anchor="middle" fill="#868e96" font-size="14">🎬 Drama</text>' +
+            '</svg>'
+          );
+        },
+
+        // Get trending drama (isTrending: true)
+        getTrendingDrama() {
+          const trending = this.posts.filter(d => d.isTrending === true);
+          if (!trending.length) return null;
+          return trending.reduce((best, d) =>
+            parseFloat(d.rating) > parseFloat(best.rating) ? d : best
+          , trending[0]);
+        },
+
+        // Sort posts with trending first, then by rating
         sortByRank() {
           const trendingSlug = this.getTrendingDrama()?.slug;
-          this.dramas.sort((a, b) => {
+          this.posts.sort((a, b) => {
             const aIsTrend = a.slug === trendingSlug ? 1 : 0;
             const bIsTrend = b.slug === trendingSlug ? 1 : 0;
             if (bIsTrend !== aIsTrend) return bIsTrend - aIsTrend;
@@ -2447,26 +2833,30 @@
           });
         },
 
-        getAll() { return this.dramas; },
+        getAll() { return this.posts; },
 
-        getBySlug(slug) { return this.dramas.find(d => d.slug === slug) || null; },
+        getBySlug(slug) { return this.posts.find(d => d.slug === slug) || null; },
 
         getFeatured() {
           this.sortByRank();
-          return this.dramas[0];
+          return this.posts[0];
         },
 
         search(query) {
           const q = (query || '').toLowerCase().trim();
-          return this.dramas.filter(drama => {
+          return this.posts.filter(post => {
             return !q ||
-              drama.title.toLowerCase().includes(q) ||
-              drama.emotionTag.toLowerCase().includes(q) ||
-              (drama.description && drama.description.toLowerCase().includes(q));
+              post.title.toLowerCase().includes(q) ||
+              post.emotionTag.toLowerCase().includes(q) ||
+              (post.description && post.description.toLowerCase().includes(q));
           });
         }
       };
 
+      // ============================================
+      // THEME MANAGER MODULE
+      // Handles dark/light/red theme switching
+      // ============================================
       const ThemeManager = {
         init() {
           this.bindEvents();
@@ -2494,6 +2884,10 @@
         }
       };
 
+      // ============================================
+      // AD MANAGER MODULE
+      // Handles advertisement loading and display
+      // ============================================
       const AdManager = {
         observer: null,
         loadedAds: new Set(),
@@ -2512,15 +2906,13 @@
           this.initHeaderAd();
         },
 
-        // Header Ad - appears 3 seconds after page fully loads
         initHeaderAd() {
           const headerAdWrapper = Utils.$('#header-ad-wrapper');
           const headerAd = Utils.$('#header-ad');
 
           if (!headerAdWrapper || !headerAd) return;
 
-          // Show header ad 3 seconds after page fully loads
-          const HEADER_AD_DELAY = 3000; // 3 seconds
+          const HEADER_AD_DELAY = 3000;
 
           setTimeout(() => {
             headerAdWrapper.classList.add('visible');
@@ -2636,7 +3028,7 @@
 
         observeNewAds() {
           if (!this.observer) return;
-          Utils$$('[data-ad-lazy="true"]:not(.ad-loaded)').forEach(ad => {
+          Utils.$$('[data-ad-lazy="true"]:not(.ad-loaded)').forEach(ad => {
             if (!this.loadedAds.has(ad.id)) {
               this.observer.observe(ad);
             }
@@ -2644,29 +3036,39 @@
         }
       };
 
+      // ============================================
+      // UI CONTROLLER MODULE
+      // Handles rendering hero, grid, search, and UI interactions
+      // ============================================
       const UIController = {
         searchQuery: '',
         hasAnimatedOnce: false,
-        postsPerLoad: 10,
         currentPostCount: 0,
         totalAdsInserted: 0,
+        isInfiniteScrollEnabled: true,
+        scrollObserver: null,
 
-        // Ad frequency helper: show ad after every 2 posts
-        // Pattern: Post, Post, Ad, Post, Post, Ad, ...
-        shouldShowAdAfterPost(postIndex) {
-          // Show ad after every 2 posts: positions 1, 3, 5, 7, 9... (0-indexed)
-          return (postIndex + 1) % 2 === 0;
+        get postsPerLoad() {
+          return PostsManager.config.postsPerLoad || 20;
         },
 
-        init() {
+        get adFrequency() {
+          return PostsManager.config.adFrequency || 2;
+        },
+
+        shouldShowAdAfterPost(postIndex) {
+          return (postIndex + 1) % this.adFrequency === 0;
+        },
+
+        async init() {
           this.cacheElements();
-          this.initFeaturedSection();
-          this.initDramaGrid();
+          this.setupImageErrorHandling();
+          await this.initContent();
           this.initSearch();
           this.initHeaderScroll();
           this.initFABs();
           this.initPolicyPages();
-          this.setupImageErrorHandling();
+          this.initInfiniteScroll();
         },
 
         cacheElements() {
@@ -2690,12 +3092,7 @@
         setupImageErrorHandling() {
           document.addEventListener('error', (e) => {
             if (e.target.tagName === 'IMG') {
-              const fallback = 'data:image/svg+xml,' + encodeURIComponent(
-                '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 300">' +
-                '<rect fill="#f1f3f5" width="480" height="300"/>' +
-                '<text x="240" y="150" text-anchor="middle" fill="#868e96" font-size="14">Image unavailable</text>' +
-                '</svg>'
-              );
+              const fallback = PostsManager.getFallbackImage();
               if (e.target.src !== fallback) {
                 e.target.src = fallback;
               }
@@ -2703,8 +3100,16 @@
           }, true);
         },
 
-        initFeaturedSection() {
-          const featured = ContentData.getFeatured();
+        // Initialize content from JSON
+        async initContent() {
+          await PostsManager.fetchPosts();
+          this.renderHeroPost();
+          this.renderDramaGrid();
+        },
+
+        // Render the hero/featured section
+        renderHeroPost() {
+          const featured = PostsManager.getFeatured();
           if (!featured || !this.elements.featuredCard) return;
 
           const { featuredImage, featuredTitle, featuredCategory, featuredVibe, featuredCard, featuredCta } = this.elements;
@@ -2714,7 +3119,7 @@
             featuredImage.alt = featured.title;
           }
           if (featuredTitle) {
-            featuredTitle.textContent = ContentData.config.featuredHeadline || featured.title;
+            featuredTitle.textContent = PostsManager.config.featuredHeadline || featured.title;
           }
           if (featuredCategory) {
             featuredCategory.textContent = featured.category.charAt(0).toUpperCase() + featured.category.slice(1);
@@ -2726,7 +3131,6 @@
           const ratingSignal = Utils.$('#featured-rating-signal');
           if (ratingSignal) ratingSignal.textContent = featured.rating;
 
-          // Featured card click - passes button element
           featuredCard.addEventListener('click', (e) => {
             if (e.target === featuredCta || (featuredCta && featuredCta.contains(e.target))) {
               return;
@@ -2743,12 +3147,8 @@
           }
         },
 
-        initDramaGrid() {
-          ContentData.sortByRank();
-          this.renderDramas();
-        },
-
-        renderDramas() {
+        // Render drama grid with progressive loading
+        renderDramaGrid() {
           this._renderDramasInternal(true);
         },
 
@@ -2760,23 +3160,19 @@
           const { dramasGrid, dramaCount, showMoreBtn } = this.elements;
           if (!dramasGrid) return;
 
-          ContentData.sortByRank();
-          const filtered = ContentData.search(this.searchQuery);
+          PostsManager.sortByRank();
+          const filtered = PostsManager.search(this.searchQuery);
 
-          // Update count
           if (dramaCount) {
-            const shown = Math.min(this.currentPostCount + this.postsPerLoad, filtered.length);
             dramaCount.textContent = `${filtered.length} drama${filtered.length !== 1 ? 's' : ''}`;
           }
 
-          // Clear grid and reset if searching
           if (this.searchQuery) {
             dramasGrid.innerHTML = '';
             this.currentPostCount = 0;
             this.totalAdsInserted = 0;
           }
 
-          // Show initial posts or all if searching
           const isInitial = this.currentPostCount === 0;
           const postsToShow = this.searchQuery ? filtered.length : Math.min(this.currentPostCount + this.postsPerLoad, filtered.length);
 
@@ -2799,31 +3195,32 @@
           const startIndex = this.currentPostCount;
           const shouldAnimate = animate && !this.hasAnimatedOnce && isInitial;
 
-          // Render new posts
+          // Render posts using document fragment for performance
+          const fragment = document.createDocumentFragment();
+
           for (let i = startIndex; i < postsToShow; i++) {
             const drama = filtered[i];
-            const trendingDramaSlug = ContentData.getTrendingDrama()?.slug;
+            const trendingDramaSlug = PostsManager.getTrendingDrama()?.slug;
             const isTopTrending = i === 0 && drama.slug === trendingDramaSlug;
-            const card = this.createDramaCard(drama, i - startIndex, isTopTrending, shouldAnimate);
-            dramasGrid.appendChild(card);
+            const card = this.createCard(drama, i - startIndex, isTopTrending, shouldAnimate);
+            fragment.appendChild(card);
 
-            // Insert ad slot after every 2 posts (Post, Post, Ad pattern)
             if (this.shouldShowAdAfterPost(i)) {
               this.totalAdsInserted++;
               const adSlot = document.createElement('div');
               adSlot.className = 'ad-slot-grid';
               adSlot.innerHTML = `<div class="ad-slot-fixed" id="grid-ad-${this.totalAdsInserted}"></div>`;
-              dramasGrid.appendChild(adSlot);
+              fragment.appendChild(adSlot);
             }
           }
 
+          dramasGrid.appendChild(fragment);
           this.currentPostCount = postsToShow;
 
           if (shouldAnimate) {
             this.hasAnimatedOnce = true;
           }
 
-          // Show/hide "Show More" button
           if (showMoreBtn) {
             if (this.currentPostCount >= filtered.length) {
               showMoreBtn.classList.add('hidden');
@@ -2835,7 +3232,8 @@
           AdManager.observeNewAds();
         },
 
-        createDramaCard(drama, index, isTopTrending = false, animate = false) {
+        // Create a single drama card element
+        createCard(drama, index, isTopTrending = false, animate = false) {
           const card = document.createElement('article');
           card.className = 'drama-card' + (animate ? ' animate-in' : '');
           if (animate) {
@@ -2843,33 +3241,32 @@
           }
 
           const trendingBadge = isTopTrending ? '<span class="trending-badge">🔥 #1 Trending</span>' : '';
+          const thumbnail = drama.thumbnail || PostsManager.getFallbackImage();
 
           card.innerHTML = `
             ${trendingBadge}
-            <div class="drama-card-link" data-link="${Utils.escapeHtml(drama.watchLinks ? drama.watchLinks[0] : '#')}">
+            <div class="drama-card-link">
               <div class="drama-thumbnail">
                 <img
-                  src="${Utils.escapeHtml(drama.thumbnail)}"
-                  alt="${Utils.escapeHtml(drama.title)}"
+                  src="${thumbnail}"
+                  alt="${drama.title}"
                   loading="lazy"
                   width="480"
                   height="300"
                   decoding="async"
                 >
-                <span class="emotion-tag ${Utils.escapeHtml(drama.emotionClass)}">${Utils.escapeHtml(drama.emotionTag)}</span>
-                <span class="drama-rating">★ ${Utils.escapeHtml(drama.rating)}</span>
+                <span class="emotion-tag ${drama.emotionClass}">${drama.emotionTag}</span>
+                <span class="drama-rating">★ ${drama.rating}</span>
               </div>
               <div class="drama-content">
-                <h3 class="drama-title">${Utils.escapeHtml(drama.title)}</h3>
+                <h3 class="drama-title">${drama.title}</h3>
                 <button class="drama-cta" type="button">▶ Watch Now</button>
               </div>
             </div>
           `;
 
-          // Get the CTA button reference
           const ctaBtn = Utils.$('.drama-cta', card);
 
-          // Card click handler - passes button element
           card.addEventListener('click', (e) => {
             if (e.target === ctaBtn || (ctaBtn && ctaBtn.contains(e.target))) {
               e.preventDefault();
@@ -2877,8 +3274,6 @@
               LinkManager.handleClick(drama, ctaBtn);
               return;
             }
-
-            // Clicking anywhere on card also triggers with button
             LinkManager.handleClick(drama, ctaBtn);
           });
 
@@ -2894,7 +3289,6 @@
             this.currentPostCount = 0;
             this.renderDramasWithoutAnimation();
 
-            // Sync both search inputs when both exist
             const value = e.target.value;
             if (searchInput && headerSearchInput && searchInput !== headerSearchInput) {
               if (e.target === searchInput) {
@@ -2909,10 +3303,28 @@
           if (headerSearchInput) headerSearchInput.addEventListener('input', handleSearch);
         },
 
-        initShowMoreButton() {
+        // Initialize infinite scroll for progressive loading
+        initInfiniteScroll() {
+          if (!this.isInfiniteScrollEnabled) return;
+          if (!('IntersectionObserver' in window)) return;
+
           const { showMoreBtn } = this.elements;
           if (!showMoreBtn) return;
 
+          this.scrollObserver = new IntersectionObserver(
+            (entries) => {
+              entries.forEach(entry => {
+                if (entry.isIntersecting && !showMoreBtn.classList.contains('hidden')) {
+                  this.renderDramasWithoutAnimation();
+                }
+              });
+            },
+            { rootMargin: '200px 0px', threshold: 0.1 }
+          );
+
+          this.scrollObserver.observe(showMoreBtn);
+
+          // Also keep manual click support
           showMoreBtn.addEventListener('click', () => {
             this.renderDramasWithoutAnimation();
           });
@@ -2973,12 +3385,17 @@
         }
       };
 
-      document.addEventListener('DOMContentLoaded', () => {
+      // ============================================
+      // INITIALIZATION
+      // Site bootstrap and module initialization
+      // ============================================
+      async function initializeSite() {
         ThemeManager.init();
         AdManager.init();
-        UIController.init();
-        UIController.initShowMoreButton();
-      });
+        await UIController.init();
+      }
+
+      document.addEventListener('DOMContentLoaded', initializeSite);
 
     })();
   </script>
