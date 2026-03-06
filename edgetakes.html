@@ -2609,8 +2609,12 @@
         isValidUrl(url) {
           if (!url || typeof url !== 'string') return false;
           try {
+            // Allow relative .html links (internal pages)
+            if (url.endsWith('.html') && !url.includes('://') && !url.startsWith('javascript:')) {
+              return true;
+            }
             const parsed = new URL(url, window.location.origin);
-            return ['http:', 'https:'].includes(parsed.protocol) || url.endsWith('.html');
+            return ['http:', 'https:'].includes(parsed.protocol);
           } catch {
             return false;
           }
@@ -2772,10 +2776,11 @@
             }
             
             // Sanitize and validate posts
-            this.posts = this.sanitizePosts(data.posts || []);
+            const sanitizedPosts = this.sanitizePosts(data.posts || []);
             
             // Reverse order: last in JSON = newest = first displayed
-            this.posts.reverse();
+            // Using spread to avoid mutating during sanitization
+            this.posts = [...sanitizedPosts].reverse();
             
             this.isLoaded = true;
             return this.posts;
