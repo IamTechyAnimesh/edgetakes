@@ -341,7 +341,7 @@
       box-shadow: 0 4px 14px var(--fire-glow);
     }
 
-    .logo-text { font-family: 'Space Grotesk', sans-serif; font-size: 1.4rem; font-weight: 700; color: var(--text-primary); letter-spacing: -0.02em; }
+    .logo-text { height: 36px; width: auto; color: var(--text-primary); display: block; }
 
     .header-actions { display: flex; align-items: center; gap: 8px; flex-shrink: 0; }
 
@@ -369,7 +369,7 @@
       .instagram-link { width: 32px; height: 32px; }
       .instagram-link svg { width: 16px; height: 16px; }
       .logo-icon { width: 32px; height: 32px; font-size: 16px; }
-      .logo-text { font-size: 1.15rem; }
+      .logo-text { height: 30px; }
     }
 
     .mode-toggle { display: flex; background: var(--bg-secondary); border: 1px solid var(--glass-border); border-radius: var(--radius-full); padding: 3px; gap: 2px; }
@@ -834,7 +834,7 @@
       font-size: 14px;
     }
 
-    .footer-logo-text { font-family: 'Space Grotesk', sans-serif; font-size: 1.05rem; font-weight: 700; color: var(--text-primary); }
+    .footer-logo-text { height: 24px; width: auto; color: var(--text-primary); display: block; }
 
     .footer-links { display: flex; justify-content: center; gap: 18px; margin-bottom: 14px; flex-wrap: wrap; }
 
@@ -939,7 +939,9 @@
     <div class="container header-inner">
       <a href="/" class="logo" aria-label="edgetakes Home">
         <span class="logo-icon">🎬</span>
-        <span class="logo-text">edgetakes</span>
+        <svg class="logo-text" viewBox="0 0 160 36" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="edgetakes">
+          <text x="0" y="27" font-family="'Space Grotesk', sans-serif" font-size="26" font-weight="700" fill="currentColor" letter-spacing="-0.5">edgetakes</text>
+        </svg>
       </a>
 
       <div class="header-actions">
@@ -1111,7 +1113,9 @@
     <div class="container footer-inner">
       <a href="/" class="footer-logo">
         <span class="footer-logo-icon">🎬</span>
-        <span class="footer-logo-text">edgetakes</span>
+        <svg class="footer-logo-text" viewBox="0 0 160 36" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="edgetakes">
+          <text x="0" y="27" font-family="'Space Grotesk', sans-serif" font-size="26" font-weight="700" fill="currentColor" letter-spacing="-0.5">edgetakes</text>
+        </svg>
       </a>
       <nav class="footer-links">
         <a href="?policy=privacy">Privacy Policy</a>
