@@ -9,15 +9,15 @@
   <meta name="author" content="edgetakes">
   <meta name="theme-color" content="#1a1a2e">
 
-  <!-- Favicon - EdgeTakes Logo (clapper board + lightning + play icon) -->
-  <link rel="icon" type="image/png" sizes="512x512" href="https://raw.githubusercontent.com/IamTechyAnimesh/edgetakes/main/favicon-512x512.png">
-  <link rel="icon" type="image/png" sizes="192x192" href="https://raw.githubusercontent.com/IamTechyAnimesh/edgetakes/main/favicon-192x192.png">
-  <link rel="icon" type="image/png" sizes="180x180" href="https://raw.githubusercontent.com/IamTechyAnimesh/edgetakes/main/favicon-180x180.png">
-  <link rel="icon" type="image/png" sizes="64x64" href="https://raw.githubusercontent.com/IamTechyAnimesh/edgetakes/main/favicon-64x64.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="https://raw.githubusercontent.com/IamTechyAnimesh/edgetakes/main/favicon-32x32.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="https://raw.githubusercontent.com/IamTechyAnimesh/edgetakes/main/favicon-16x16.png">
-  <link rel="apple-touch-icon" sizes="180x180" href="https://raw.githubusercontent.com/IamTechyAnimesh/edgetakes/main/favicon-180x180.png">
-  <link rel="shortcut icon" href="https://raw.githubusercontent.com/IamTechyAnimesh/edgetakes/main/favicon-32x32.png">
+  <!-- Favicon - EdgeTakes Logo Icon (clapper board + lightning + play icon) -->
+  <link rel="icon" type="image/png" sizes="512x512" href="https://raw.githubusercontent.com/user-attachments/assets/c0c854ce-61e8-4fe3-96e6-07fd54cb8b21">
+  <link rel="icon" type="image/png" sizes="192x192" href="https://raw.githubusercontent.com/user-attachments/assets/c0c854ce-61e8-4fe3-96e6-07fd54cb8b21">
+  <link rel="icon" type="image/png" sizes="180x180" href="https://raw.githubusercontent.com/user-attachments/assets/c0c854ce-61e8-4fe3-96e6-07fd54cb8b21">
+  <link rel="icon" type="image/png" sizes="64x64" href="https://raw.githubusercontent.com/user-attachments/assets/c0c854ce-61e8-4fe3-96e6-07fd54cb8b21">
+  <link rel="icon" type="image/png" sizes="32x32" href="https://raw.githubusercontent.com/user-attachments/assets/c0c854ce-61e8-4fe3-96e6-07fd54cb8b21">
+  <link rel="icon" type="image/png" sizes="16x16" href="https://raw.githubusercontent.com/user-attachments/assets/c0c854ce-61e8-4fe3-96e6-07fd54cb8b21">
+  <link rel="apple-touch-icon" sizes="180x180" href="https://raw.githubusercontent.com/user-attachments/assets/c0c854ce-61e8-4fe3-96e6-07fd54cb8b21">
+  <link rel="shortcut icon" href="https://raw.githubusercontent.com/user-attachments/assets/c0c854ce-61e8-4fe3-96e6-07fd54cb8b21">
 
   <meta http-equiv="X-Content-Type-Options" content="nosniff">
   <meta name="referrer" content="strict-origin-when-cross-origin">
@@ -407,15 +407,19 @@
     .logo:hover { opacity: 0.85; }
 
     .logo-icon {
-      width: 36px;
-      height: 36px;
-      background: linear-gradient(135deg, var(--fire), var(--revenge));
-      border-radius: 9px;
+      width: 42px;
+      height: 42px;
+      border-radius: 0;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 18px;
-      box-shadow: 0 3px 10px var(--fire-glow);
+      background: transparent;
+    }
+
+    .logo-icon img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
     }
 
     .logo-text { font-family: 'Space Grotesk', sans-serif; font-size: 1.35rem; font-weight: 700; color: var(--text-primary); }
@@ -445,7 +449,7 @@
       .mode-btn { width: 26px; height: 26px; font-size: 12px; }
       .instagram-link { width: 32px; height: 32px; }
       .instagram-link svg { width: 16px; height: 16px; }
-      .logo-icon { width: 32px; height: 32px; font-size: 16px; }
+      .logo-icon { width: 32px; height: 32px; }
       .logo-text { font-size: 1.15rem; }
     }
 
@@ -592,36 +596,36 @@
       pointer-events: none;
     }
 
-    /* SEARCH */
-    .search-section { padding: var(--space-md) 0 var(--space-lg); }
-    .search-wrapper { max-width: 720px; margin: 0 auto; }
+    /* SEARCH - Enhanced larger search box */
+    .search-section { padding: var(--space-lg) 0 var(--space-xl); }
+    .search-wrapper { max-width: 100%; margin: 0 auto; padding: 0 var(--space-md); }
 
     .search-box {
       position: relative;
       background: var(--bg-card);
       border: 2px solid var(--glass-border);
       border-radius: var(--radius-xl);
-      padding: 4px;
+      padding: 6px;
       transition: border-color var(--duration-fast) ease, box-shadow var(--duration-fast) ease, transform var(--duration-fast) ease;
-      box-shadow: var(--shadow-md);
+      box-shadow: var(--shadow-lg);
     }
 
     .search-box:hover { 
-      border-color: rgba(26, 26, 46, 0.15); 
-      transform: translateY(-1px);
-      box-shadow: var(--shadow-lg); 
+      border-color: rgba(26, 26, 46, 0.2); 
+      transform: translateY(-2px);
+      box-shadow: 0 12px 40px rgba(0, 0, 0, 0.12); 
     }
 
     .search-box:focus-within { 
       border-color: var(--accent-primary); 
-      box-shadow: var(--shadow-lg), 0 0 0 4px var(--accent-subtle);
-      transform: translateY(-1px);
+      box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15), 0 0 0 4px var(--accent-subtle);
+      transform: translateY(-2px);
     }
 
     .search-input {
       width: 100%;
-      padding: 16px 24px 16px 52px;
-      font-size: 1rem;
+      padding: 20px 30px 20px 60px;
+      font-size: 1.15rem;
       font-family: inherit;
       font-weight: 500;
       background: transparent;
@@ -634,15 +638,16 @@
     .search-input::placeholder { 
       color: var(--text-muted); 
       font-weight: 400;
-      opacity: 0.8;
+      opacity: 0.75;
+      font-size: 1.1rem;
     }
 
     .search-icon {
       position: absolute;
-      left: 18px;
+      left: 22px;
       top: 50%;
       transform: translateY(-50%);
-      font-size: 1.2rem;
+      font-size: 1.4rem;
       color: var(--text-muted);
       pointer-events: none;
       transition: color var(--duration-fast) ease, transform var(--duration-fast) ease;
@@ -650,7 +655,7 @@
 
     .search-box:focus-within .search-icon { 
       color: var(--accent-primary); 
-      transform: translateY(-50%) scale(1.1);
+      transform: translateY(-50%) scale(1.15);
     }
 
     /* DRAMAS GRID */
@@ -972,12 +977,17 @@
     .footer-logo-icon {
       width: 28px;
       height: 28px;
-      background: linear-gradient(135deg, var(--fire), var(--revenge));
-      border-radius: 7px;
+      background: transparent;
+      border-radius: 0;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 14px;
+    }
+    
+    .footer-logo-icon img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
     }
 
     .footer-logo-text { font-family: 'Space Grotesk', sans-serif; font-size: 1.05rem; font-weight: 700; color: var(--text-primary); }
@@ -1207,7 +1217,7 @@
         font-size: 1rem;
       }
 
-      .logo-icon { width: 40px; height: 40px; font-size: 20px; border-radius: 10px; }
+      .logo-icon { width: 44px; height: 44px; }
       .logo-text { font-size: 1.45rem; }
 
       .header-actions { gap: 12px; }
@@ -1275,7 +1285,7 @@
     @media (min-width: 1024px) {
       .dramas-section { padding: var(--space-lg) 0 var(--space-xl); }
       .comments-section { padding: var(--space-xl) 0 60px; }
-      .search-section { padding: var(--space-lg) 0 var(--space-lg); }
+      .search-section { padding: var(--space-xl) 0 var(--space-xl); }
       .featured-section { padding: var(--space-lg) 0 var(--space-md); }
 
       .section-header { margin-bottom: var(--space-lg); }
@@ -1285,24 +1295,26 @@
       .monetization-slot { margin: var(--space-xl) auto; }
       
       /* Search box wider on desktop */
-      .search-wrapper { max-width: 800px; }
-      .search-input { padding: 18px 28px 18px 56px; font-size: 1.05rem; }
-      .search-icon { left: 22px; font-size: 1.25rem; }
+      .search-wrapper { max-width: 100%; padding: 0 var(--space-lg); }
+      .search-input { padding: 22px 32px 22px 64px; font-size: 1.2rem; }
+      .search-icon { left: 26px; font-size: 1.5rem; }
     }
 
     @media (min-width: 1280px) {
       .featured-section { padding: 56px 0 40px; }
       .dramas-section { padding: var(--space-xl) 0 72px; }
-      .search-section { padding: var(--space-lg) 0 var(--space-xl); }
+      .search-section { padding: var(--space-xl) 0 var(--space-xl); }
 
       .section-title { font-size: 1.55rem; }
       
       /* Even wider search on large screens */
-      .search-wrapper { max-width: 900px; }
+      .search-wrapper { max-width: 100%; padding: 0 var(--space-xl); }
+      .search-input { padding: 24px 36px 24px 70px; font-size: 1.25rem; }
+      .search-icon { left: 28px; font-size: 1.6rem; }
     }
     
     @media (min-width: 1440px) {
-      .search-wrapper { max-width: 960px; }
+      .search-wrapper { max-width: 1200px; padding: 0; margin: 0 auto; }
       .comments-container { max-width: 800px; }
     }
 
@@ -2465,7 +2477,7 @@
   <header class="header" role="banner">
     <div class="container header-inner">
       <a href="/" class="logo" aria-label="edgetakes Home">
-        <span class="logo-icon">🎬</span>
+        <span class="logo-icon"><img src="https://raw.githubusercontent.com/user-attachments/assets/c0c854ce-61e8-4fe3-96e6-07fd54cb8b21" alt="EdgeTakes Logo"></span>
         <span class="logo-text">edgetakes</span>
       </a>
 
@@ -2654,7 +2666,7 @@
   <footer class="footer">
     <div class="container footer-inner">
       <a href="/" class="footer-logo">
-        <span class="footer-logo-icon">🎬</span>
+        <span class="footer-logo-icon"><img src="https://raw.githubusercontent.com/user-attachments/assets/c0c854ce-61e8-4fe3-96e6-07fd54cb8b21" alt="EdgeTakes Logo"></span>
         <span class="footer-logo-text">edgetakes</span>
       </a>
       <nav class="footer-links">
@@ -2875,7 +2887,7 @@
 
         // JSON data source URLs - configurable
         jsonSources: {
-          github: 'https://raw.githubusercontent.com/IamTechyAnimesh/edgetakes/main/edgetakes.posts.json',
+          github: 'https://raw.githubusercontent.com/shivaa069/-edgetakes/refs/heads/main/edgetakes.posts.json',
           local: 'edgetakes.posts.json'
         },
 
