@@ -1719,7 +1719,7 @@
 
         observeNewAds() {
           if (!this.observer) return;
-          Utils$$('[data-ad-lazy="true"]:not(.ad-loaded)').forEach(ad => {
+          Utils.$$('[data-ad-lazy="true"]:not(.ad-loaded)').forEach(ad => {
             if (!this.loadedAds.has(ad.id)) {
               this.observer.observe(ad);
             }
