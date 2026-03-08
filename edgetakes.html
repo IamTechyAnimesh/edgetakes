@@ -1311,14 +1311,21 @@
           return newCount;
         },
 
-        // Check if click should open ad (odd clicks: 1, 3, 5...)
+        // Check if click should open ad
+        // Odd click numbers (1, 3, 5...) return true → open ad in new tab
+        // Even click numbers (2, 4, 6...) return false → show modal
         shouldOpenAd(clickNumber) {
           return clickNumber % 2 === 1;
         },
 
+        // Validate drama has required data for click handling
+        isValidDrama(drama) {
+          return drama && drama.watchLinks && drama.watchLinks.length >= 1;
+        },
+
         // Handle click for drama cards - passes button element
         handleClick(drama, buttonElement) {
-          if (!drama || !drama.watchLinks || drama.watchLinks.length < 1) {
+          if (!this.isValidDrama(drama)) {
             return;
           }
 
@@ -1343,7 +1350,7 @@
 
         // Handle click for featured card - same logic
         handleFeaturedClick(drama, buttonElement) {
-          if (!drama || !drama.watchLinks || drama.watchLinks.length < 1) {
+          if (!this.isValidDrama(drama)) {
             return;
           }
 
@@ -1403,7 +1410,9 @@
             }
           });
 
-          // CTA button - opens ad link
+          // CTA button - intentionally opens monetization link for ad revenue
+          // This is by design: even when users see the modal, the final action
+          // still routes through the ad network for monetization
           if (this.elements.cta) {
             this.elements.cta.addEventListener('click', () => {
               if (this.currentDrama && this.currentDrama.watchLinks && this.currentDrama.watchLinks[0]) {
