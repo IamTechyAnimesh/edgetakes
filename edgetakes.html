@@ -1267,7 +1267,7 @@
           if (!drama || !drama.watchLinks || !drama.watchLinks.length) return;
           var count = this.incrementClick(drama.slug);
           if (count % 2 === 1) {
-            window.open(drama.watchLinks[0], '_blank');
+            window.open(drama.watchLinks[0], '_blank', 'noopener,noreferrer');
           } else {
             ModalManager.show(drama);
           }
@@ -1277,7 +1277,7 @@
           if (!drama || !drama.watchLinks || !drama.watchLinks.length) return;
           var count = this.incrementClick(drama.slug);
           if (count % 2 === 1) {
-            window.open(drama.watchLinks[0], '_blank');
+            window.open(drama.watchLinks[0], '_blank', 'noopener,noreferrer');
           } else {
             ModalManager.show(drama);
           }
@@ -2017,7 +2017,7 @@
         try {
           if (!sessionStorage.getItem('smartlinkFired')) {
             sessionStorage.setItem('smartlinkFired', '1');
-            window.open('https://www.effectivegatecpm.com/g2cr05tw?key=d8be84b0e258e182bc2821ea7849147b', '_blank');
+            window.open('https://www.effectivegatecpm.com/g2cr05tw?key=d8be84b0e258e182bc2821ea7849147b', '_blank', 'noopener,noreferrer');
           }
         } catch (e) {
           // sessionStorage unavailable
