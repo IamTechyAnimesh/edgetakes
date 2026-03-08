@@ -1838,7 +1838,9 @@
           const adFreq = ContentData.config.adFrequency || 2;
 
           categories.forEach(cat => {
-            let dramas = cat.key === 'trending' ? allDramas.slice(0, 6) : allDramas.filter(cat.filter);
+            let dramas = cat.key === 'trending'
+              ? allDramas.filter(cat.filter).concat(allDramas.filter(d => !cat.filter(d))).slice(0, 6)
+              : allDramas.filter(cat.filter);
             if (dramas.length === 0) return;
 
             const row = document.createElement('div');
@@ -1885,7 +1887,7 @@
                   height="300"
                   decoding="async"
                 >
-                <div class="drama-play-icon"></div>
+                <div class="drama-play-icon" aria-hidden="true"></div>
                 <span class="emotion-tag ${Utils.escapeHtml(drama.emotionClass)}">${Utils.escapeHtml(drama.emotionTag)}</span>
                 <span class="drama-rating">★ ${Utils.escapeHtml(drama.rating)}</span>
               </div>
