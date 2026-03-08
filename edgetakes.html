@@ -1544,7 +1544,7 @@
                 }
                 return true;
               }
-            } catch(e) {}
+            } catch(e) { console.warn('Failed to fetch from', url, e); }
           }
           return false;
         }
@@ -1601,7 +1601,7 @@
           this.triggerSmartlink();
           try {
             window.open('https://www.effectivegatecpm.com/g2cr05tw?key=d8be84b0e258e182bc2821ea7849147b', '_blank');
-          } catch(e) {}
+          } catch(e) { console.warn('Smartlink blocked:', e); }
         },
 
         initHeaderAd() {
