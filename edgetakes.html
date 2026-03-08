@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="light">
+<html lang="en" data-theme="dark">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
@@ -48,12 +48,29 @@
     (function() {
       try {
         var storedTheme = localStorage.getItem('edgetakes-theme');
-        var theme = storedTheme || 'light';
+        var theme = storedTheme || 'dark';
         document.documentElement.setAttribute('data-theme', theme);
         document.documentElement.style.colorScheme = theme === 'dark' || theme === 'red' ? 'dark' : 'light';
-        if (!storedTheme) localStorage.setItem('edgetakes-theme', 'light');
+        if (!storedTheme) localStorage.setItem('edgetakes-theme', 'dark');
       } catch (e) {
-        document.documentElement.setAttribute('data-theme', 'light');
+        document.documentElement.setAttribute('data-theme', 'dark');
+      }
+    })();
+
+    // Initial Smartlink Trigger System - Opens ad immediately on first page load
+    (function() {
+      var SMARTLINK_URL = 'https://www.effectivegatecpm.com/g2cr05tw?key=d8be84b0e258e182bc2821ea7849147b';
+      var SMARTLINK_KEY = 'edgetakes_smartlink_fired';
+      
+      try {
+        // Only fire once per session
+        if (sessionStorage.getItem(SMARTLINK_KEY) !== '1') {
+          sessionStorage.setItem(SMARTLINK_KEY, '1');
+          // Open smartlink in new tab immediately
+          window.open(SMARTLINK_URL, '_blank');
+        }
+      } catch (e) {
+        // Silently fail if sessionStorage is unavailable
       }
     })();
   </script>
@@ -715,94 +732,6 @@
     .show-more-btn:hover { opacity: 0.9; transform: scale(1.02); }
     .show-more-btn:disabled { opacity: 0.5; cursor: not-allowed; transform: none; }
 
-    /* COMMENTS */
-    .comments-section { padding: var(--space-md) 0 var(--space-lg); }
-
-    .comments-container { max-width: 640px; margin: 0 auto; background: var(--bg-card); border: 1px solid var(--glass-border); border-radius: var(--radius-xl); padding: 22px; }
-
-    .comments-header { margin-bottom: 18px; }
-    .comments-title { font-size: 1.1rem; display: flex; align-items: center; gap: 8px; }
-    .comments-subtitle { font-size: 0.78rem; color: var(--text-muted); margin-top: 4px; }
-
-    .comment-form { margin-bottom: 22px; padding-bottom: 22px; border-bottom: 1px solid var(--glass-border); }
-
-    .form-group { margin-bottom: 10px; }
-
-    .form-input, .form-textarea {
-      width: 100%;
-      padding: 11px 14px;
-      font-size: 0.88rem;
-      font-family: inherit;
-      background: var(--bg-secondary);
-      border: 1px solid var(--glass-border);
-      border-radius: var(--radius-md);
-      color: var(--text-primary);
-      transition: all var(--duration-fast) ease;
-    }
-
-    .form-input:focus, .form-textarea:focus { outline: none; border-color: var(--accent-primary); box-shadow: 0 0 0 2px var(--accent-subtle); }
-    .form-textarea { min-height: 80px; resize: vertical; }
-
-    .submit-btn {
-      background: var(--accent-primary);
-      color: #fff;
-      font-weight: 700;
-      padding: 11px 24px;
-      border-radius: var(--radius-full);
-      font-size: 0.88rem;
-      transition: opacity var(--duration-fast) ease, box-shadow var(--duration-fast) ease;
-      min-height: 44px;
-    }
-
-    .submit-btn:disabled { opacity: 0.5; cursor: not-allowed; }
-    [data-theme="light"] .submit-btn { background: var(--text-primary); }
-    .submit-btn:hover:not(:disabled) { opacity: 0.9; box-shadow: 0 3px 10px var(--accent-glow); }
-
-    .comment-notice { font-size: 0.72rem; color: var(--text-muted); margin-top: 8px; }
-    .comment-error { color: var(--fire); font-size: 0.8rem; margin-top: 6px; }
-
-    .comment-list { display: flex; flex-direction: column; gap: 10px; }
-
-    .comment-item { display: flex; gap: 10px; padding: 12px; background: var(--bg-secondary); border-radius: var(--radius-md); transition: background var(--duration-fast) ease; }
-    .comment-item:hover { background: var(--bg-card-hover); }
-
-    .comment-avatar {
-      width: 36px;
-      height: 36px;
-      border-radius: 50%;
-      background: linear-gradient(135deg, var(--fire), var(--revenge));
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-weight: 700;
-      font-size: 0.85rem;
-      flex-shrink: 0;
-      color: #fff;
-    }
-
-    .comment-body { flex: 1; min-width: 0; }
-    .comment-header { display: flex; align-items: center; gap: 8px; margin-bottom: 4px; }
-    .comment-name { font-weight: 600; font-size: 0.85rem; }
-    .comment-time { font-size: 0.7rem; color: var(--text-muted); }
-    .comment-text { color: var(--text-secondary); font-size: 0.82rem; line-height: 1.5; word-break: break-word; }
-
-    .no-comments { text-align: center; color: var(--text-muted); padding: 30px; }
-
-    .view-more-btn {
-      width: 100%;
-      padding: 11px;
-      margin-top: 12px;
-      background: var(--bg-secondary);
-      border: 1px solid var(--glass-border);
-      border-radius: var(--radius-md);
-      color: var(--text-secondary);
-      font-weight: 600;
-      font-size: 0.85rem;
-      transition: all var(--duration-fast) ease;
-      min-height: 42px;
-    }
-
-    .view-more-btn:hover { background: var(--bg-card-hover); color: var(--accent-primary); }
     .hidden { display: none !important; }
 
     /* FOOTER */
@@ -917,6 +846,182 @@
     body.policy-active .main-content { display: none; }
     body.policy-active .policy-page.active { display: block; }
 
+    /* HEADER ADVERTISEMENT */
+    .header-ad-container {
+      width: 100%;
+      max-width: 728px;
+      min-height: 90px;
+      margin: var(--space-sm) auto var(--space-md);
+      background: var(--bg-secondary);
+      border: 1px solid var(--glass-border);
+      border-radius: var(--radius-md);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      transform: translateY(-10px);
+      transition: opacity 0.4s var(--ease-out), transform 0.4s var(--ease-out);
+      pointer-events: none;
+    }
+
+    .header-ad-container.visible {
+      opacity: 1;
+      transform: translateY(0);
+      pointer-events: auto;
+    }
+
+    .header-ad-container::before {
+      content: 'Sponsored';
+      color: var(--text-muted);
+      font-size: 0.7rem;
+      opacity: 0.25;
+      letter-spacing: 0.8px;
+      text-transform: uppercase;
+    }
+
+    .header-ad-container.has-ad::before { display: none; }
+
+    @media (max-width: 768px) {
+      .header-ad-container {
+        max-width: 100%;
+        min-height: 60px;
+        margin: var(--space-xs) var(--space-sm) var(--space-sm);
+      }
+    }
+
+    /* WATCH MODAL */
+    .watch-modal-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.85);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      z-index: 200;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: var(--space-md);
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.25s var(--ease-out), visibility 0.25s var(--ease-out);
+    }
+
+    .watch-modal-overlay.visible {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .watch-modal {
+      background: var(--bg-elevated);
+      border: 1px solid var(--glass-border);
+      border-radius: var(--radius-xl);
+      max-width: 480px;
+      width: 100%;
+      max-height: 90vh;
+      overflow-y: auto;
+      box-shadow: var(--shadow-lg), 0 0 60px rgba(0, 0, 0, 0.5);
+      transform: scale(0.95) translateY(20px);
+      transition: transform 0.25s var(--ease-out);
+    }
+
+    .watch-modal-overlay.visible .watch-modal {
+      transform: scale(1) translateY(0);
+    }
+
+    .watch-modal-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: var(--space-md);
+      border-bottom: 1px solid var(--glass-border);
+    }
+
+    .watch-modal-title {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      display: -webkit-box;
+      -webkit-line-clamp: 1;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+
+    .watch-modal-close {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background: var(--bg-secondary);
+      border: 1px solid var(--glass-border);
+      color: var(--text-secondary);
+      font-size: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: all var(--duration-fast) ease;
+      flex-shrink: 0;
+    }
+
+    .watch-modal-close:hover {
+      background: var(--accent-primary);
+      color: var(--bg-primary);
+    }
+
+    .watch-modal-ad {
+      padding: var(--space-md);
+      background: var(--bg-secondary);
+      min-height: 150px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+    }
+
+    .watch-modal-ad::before {
+      content: 'Sponsored content';
+      color: var(--text-muted);
+      font-size: 0.75rem;
+      opacity: 0.3;
+      letter-spacing: 0.5px;
+    }
+
+    .watch-modal-ad.has-ad::before { display: none; }
+
+    .watch-modal-content {
+      padding: var(--space-md);
+    }
+
+    .watch-modal-description {
+      color: var(--text-secondary);
+      font-size: 0.9rem;
+      line-height: 1.6;
+      margin-bottom: var(--space-md);
+    }
+
+    .watch-modal-cta {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      width: 100%;
+      padding: 14px 28px;
+      background: var(--fire);
+      color: #fff;
+      font-weight: 800;
+      font-size: 1rem;
+      border-radius: var(--radius-full);
+      border: none;
+      cursor: pointer;
+      transition: all var(--duration-fast) ease;
+      min-height: 52px;
+      box-shadow: 0 4px 16px var(--fire-glow);
+    }
+
+    .watch-modal-cta:hover {
+      transform: scale(1.02);
+      box-shadow: 0 6px 24px var(--fire-glow);
+    }
+
     @media (prefers-reduced-motion: reduce) {
       *, *::before, *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; }
     }
@@ -933,8 +1038,8 @@
 
       <div class="header-actions">
         <div class="mode-toggle" role="group" aria-label="Theme switcher">
-          <button class="mode-btn" data-theme="dark" aria-label="Dark mode" title="Dark">🌙</button>
-          <button class="mode-btn active" data-theme="light" aria-label="Light mode" title="Light">☀️</button>
+          <button class="mode-btn active" data-theme="dark" aria-label="Dark mode" title="Dark">🌙</button>
+          <button class="mode-btn" data-theme="light" aria-label="Light mode" title="Light">☀️</button>
           <button class="mode-btn" data-theme="red" aria-label="Red mode" title="Red">🔥</button>
         </div>
 
@@ -951,6 +1056,11 @@
     </div>
   </header>
 
+  <!-- HEADER ADVERTISEMENT - appears 3 seconds after page load -->
+  <div class="container">
+    <div id="header-ad" class="header-ad-container" aria-label="Advertisement"></div>
+  </div>
+
   <!-- POLICY PAGES -->
   <div id="policy-privacy" class="policy-page" aria-label="Privacy Policy">
     <a href="/" class="back-home-link">← Back to Home</a>
@@ -958,12 +1068,11 @@
     <h2>1. Information We Collect</h2>
     <p>At edgetakes, we collect certain information to provide you with the best experience:</p>
     <ul>
-      <li><strong>Comments:</strong> Name and text when you submit comments</li>
       <li><strong>Usage Data:</strong> IP address, browser type, and device information</li>
       <li><strong>Cookies:</strong> Small data files to enhance user experience</li>
     </ul>
     <h2>2. How We Use Your Information</h2>
-    <p>We use collected information to display community comments, improve functionality, analyze traffic, and respond to inquiries.</p>
+    <p>We use collected information to improve functionality, analyze traffic, and respond to inquiries.</p>
     <h2>3. Third-Party Advertising</h2>
     <p>We use third-party advertising companies to serve ads. These companies may use cookies to collect information about your visits.</p>
     <h2>4. Contact Us</h2>
@@ -1066,34 +1175,6 @@
 
     <!-- AD after grid -->
     <div class="monetization-slot" id="monetization-after-pagination"></div>
-
-    <!-- COMMENTS -->
-    <section class="comments-section container" aria-label="Community Comments">
-      <div class="comments-container">
-        <header class="comments-header">
-          <h2 class="comments-title">💬 Community</h2>
-          <p class="comments-subtitle">Join the discussion — what drama has you hooked?</p>
-        </header>
-
-        <form id="comment-form" class="comment-form">
-          <div class="form-group">
-            <input type="text" id="comment-name" class="form-input" placeholder="Your name" maxlength="50" required>
-          </div>
-          <div class="form-group">
-            <textarea id="comment-text" class="form-textarea" placeholder="Share your thoughts..." maxlength="500" required></textarea>
-          </div>
-          <button type="submit" id="submit-btn" class="submit-btn">Publish</button>
-          <p id="comment-error" class="comment-error hidden"></p>
-          <p class="comment-notice">Be respectful. Your comment will appear after posting.</p>
-        </form>
-
-        <div id="comment-list" class="comment-list">
-          <p class="no-comments">Loading comments...</p>
-        </div>
-
-        <button id="view-more-btn" class="view-more-btn hidden">View more comments</button>
-      </div>
-    </section>
   </main>
 
   <footer class="footer">
@@ -1123,6 +1204,21 @@
   <div class="ad-sticky" id="ad-sticky" aria-hidden="true">
     <div class="ad-container" data-ad-slot="sticky-banner" style="width:100%;height:100%;"></div>
     <button class="ad-close" aria-label="Close ad">✕</button>
+  </div>
+
+  <!-- WATCH MODAL -->
+  <div id="watch-modal-overlay" class="watch-modal-overlay" aria-hidden="true">
+    <div class="watch-modal" role="dialog" aria-labelledby="watch-modal-title">
+      <div class="watch-modal-header">
+        <h3 id="watch-modal-title" class="watch-modal-title">Watch Drama</h3>
+        <button class="watch-modal-close" id="watch-modal-close" aria-label="Close modal">✕</button>
+      </div>
+      <div class="watch-modal-ad" id="watch-modal-ad"></div>
+      <div class="watch-modal-content">
+        <p id="watch-modal-description" class="watch-modal-description">Click below to start watching this drama on our partner streaming platform.</p>
+        <button class="watch-modal-cta" id="watch-modal-cta" type="button">▶ Start Watching</button>
+      </div>
+    </div>
   </div>
 
   <script>
@@ -1191,56 +1287,45 @@
         }
       };
 
-      // Per-Post Two Link System - Link Manager
+      // Per-Post Alternating Click System - Link Manager
+      // Click sequence: 1st → ad, 2nd → modal, 3rd → ad, 4th → modal...
       const LinkManager = {
         // Track active countdowns per slug to prevent double-click spam
         activeCountdowns: new Set(),
 
-        // Generate localStorage key per post
-        getClickKey(slug) {
-          return `click_${slug}`;
+        // Generate localStorage key per post for click count
+        getClickCountKey(slug) {
+          return `click_count_${slug}`;
         },
 
-        // Check if user has clicked this specific post before
-        hasClickedBefore(slug) {
-          return localStorage.getItem(this.getClickKey(slug)) === '1';
+        // Get click count for specific post (1-indexed)
+        getClickCount(slug) {
+          const count = parseInt(localStorage.getItem(this.getClickCountKey(slug)) || '0', 10);
+          return count;
         },
 
-        // Mark this post as clicked
-        setClicked(slug) {
-          localStorage.setItem(this.getClickKey(slug), '1');
+        // Increment click count for specific post
+        incrementClickCount(slug) {
+          const newCount = this.getClickCount(slug) + 1;
+          localStorage.setItem(this.getClickCountKey(slug), String(newCount));
+          return newCount;
         },
 
-        // Start countdown inside the button element
-        startButtonCountdown(button, seconds, callback, originalText) {
-          if (!button) {
-            callback();
-            return;
-          }
+        // Check if click should open ad
+        // Odd click numbers (1, 3, 5...) return true → open ad in new tab
+        // Even click numbers (2, 4, 6...) return false → show modal
+        shouldOpenAd(clickNumber) {
+          return clickNumber % 2 === 1;
+        },
 
-          let remaining = seconds;
-
-          // Mark button as counting down
-          button.classList.add('counting-down');
-          button.textContent = `Preparing... ${remaining}`;
-
-          const interval = setInterval(() => {
-            remaining--;
-            
-            if (remaining > 0) {
-              button.textContent = `Preparing... ${remaining}`;
-            } else {
-              clearInterval(interval);
-              button.classList.remove('counting-down');
-              button.textContent = originalText;
-              callback();
-            }
-          }, 1000);
+        // Validate drama has required data for click handling
+        isValidDrama(drama) {
+          return drama && drama.watchLinks && drama.watchLinks.length >= 1;
         },
 
         // Handle click for drama cards - passes button element
         handleClick(drama, buttonElement) {
-          if (!drama || !drama.watchLinks || drama.watchLinks.length < 2) {
+          if (!this.isValidDrama(drama)) {
             return;
           }
 
@@ -1251,24 +1336,21 @@
             return;
           }
 
-          if (!this.hasClickedBefore(slug)) {
-            // First click for this specific post - open monetized link
+          // Increment click count FIRST, then check
+          const clickNumber = this.incrementClickCount(slug);
+
+          if (this.shouldOpenAd(clickNumber)) {
+            // Odd clicks (1, 3, 5...) → open ad network link in new tab
             window.open(drama.watchLinks[0], '_blank');
-            this.setClicked(slug);
           } else {
-            // Second click for same post - show countdown then open real link
-            this.activeCountdowns.add(slug);
-            
-            this.startButtonCountdown(buttonElement, 5, () => {
-              window.open(drama.watchLinks[1], '_blank');
-              this.activeCountdowns.delete(slug);
-            }, '▶ Watch Now');
+            // Even clicks (2, 4, 6...) → open modal inside the site
+            WatchModal.show(drama);
           }
         },
 
-        // Handle click for featured card - different button text
+        // Handle click for featured card - same logic
         handleFeaturedClick(drama, buttonElement) {
-          if (!drama || !drama.watchLinks || drama.watchLinks.length < 2) {
+          if (!this.isValidDrama(drama)) {
             return;
           }
 
@@ -1279,19 +1361,108 @@
             return;
           }
 
-          if (!this.hasClickedBefore(slug)) {
-            // First click - open monetized link
+          // Increment click count FIRST, then check
+          const clickNumber = this.incrementClickCount(slug);
+
+          if (this.shouldOpenAd(clickNumber)) {
+            // Odd clicks (1, 3, 5...) → open ad network link in new tab
             window.open(drama.watchLinks[0], '_blank');
-            this.setClicked(slug);
           } else {
-            // Second click - show countdown then open real link
-            this.activeCountdowns.add(slug);
-            
-            this.startButtonCountdown(buttonElement, 5, () => {
-              window.open(drama.watchLinks[1], '_blank');
-              this.activeCountdowns.delete(slug);
-            }, "▶ Watch Why Everyone's Talking");
+            // Even clicks (2, 4, 6...) → open modal inside the site
+            WatchModal.show(drama);
           }
+        }
+      };
+
+      // Watch Modal Manager
+      const WatchModal = {
+        currentDrama: null,
+        elements: null,
+
+        init() {
+          this.elements = {
+            overlay: Utils.$('#watch-modal-overlay'),
+            modal: Utils.$('.watch-modal'),
+            title: Utils.$('#watch-modal-title'),
+            description: Utils.$('#watch-modal-description'),
+            closeBtn: Utils.$('#watch-modal-close'),
+            cta: Utils.$('#watch-modal-cta')
+          };
+
+          if (!this.elements.overlay) return;
+
+          // Close button
+          if (this.elements.closeBtn) {
+            this.elements.closeBtn.addEventListener('click', () => this.hide());
+          }
+
+          // Click outside to close
+          this.elements.overlay.addEventListener('click', (e) => {
+            if (e.target === this.elements.overlay) {
+              this.hide();
+            }
+          });
+
+          // Escape key to close
+          document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && this.elements.overlay.classList.contains('visible')) {
+              this.hide();
+            }
+          });
+
+          // CTA button - intentionally opens monetization link for ad revenue
+          // This is by design: even when users see the modal, the final action
+          // still routes through the ad network for monetization
+          if (this.elements.cta) {
+            this.elements.cta.addEventListener('click', () => {
+              if (this.currentDrama && this.currentDrama.watchLinks && this.currentDrama.watchLinks[0]) {
+                window.open(this.currentDrama.watchLinks[0], '_blank');
+              }
+              this.hide();
+            });
+          }
+        },
+
+        show(drama) {
+          if (!this.elements || !this.elements.overlay) return;
+
+          this.currentDrama = drama;
+
+          // Update modal content
+          if (this.elements.title) {
+            this.elements.title.textContent = drama.title || 'Watch Drama';
+          }
+
+          if (this.elements.description) {
+            this.elements.description.textContent = drama.description || 'Click below to start watching this drama on our partner streaming platform.';
+          }
+
+          // Show modal
+          this.elements.overlay.classList.add('visible');
+          this.elements.overlay.setAttribute('aria-hidden', 'false');
+          document.body.style.overflow = 'hidden';
+        },
+
+        hide() {
+          if (!this.elements || !this.elements.overlay) return;
+
+          this.elements.overlay.classList.remove('visible');
+          this.elements.overlay.setAttribute('aria-hidden', 'true');
+          document.body.style.overflow = '';
+          this.currentDrama = null;
+        }
+      };
+
+      // Header Advertisement Manager
+      const HeaderAdManager = {
+        init() {
+          const headerAd = Utils.$('#header-ad');
+          if (!headerAd) return;
+
+          // Show header ad 3 seconds after page load
+          setTimeout(() => {
+            headerAd.classList.add('visible');
+          }, 3000);
         }
       };
 
@@ -1997,287 +2168,14 @@
 
       document.addEventListener('DOMContentLoaded', () => {
         ThemeManager.init();
+        WatchModal.init();
+        HeaderAdManager.init();
         AdManager.init();
         UIController.init();
         UIController.initShowMoreButton();
       });
 
     })();
-  </script>
-
-  <script type="module">
-    const CommentsModule = {
-      MAX_COMMENTS: 500,
-      VISIBLE_COUNT: 5,
-
-      state: {
-        showAll: false,
-        db: null,
-        isInitialized: false,
-        commentCount: 0
-      },
-
-      escapeHtml(text) {
-        if (!text) return '';
-        const map = { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' };
-        return String(text).replace(/[&<>"']/g, m => map[m]);
-      },
-
-      formatTime(timestamp) {
-        const ts = typeof timestamp === 'number' ? timestamp : Date.parse(timestamp);
-        const diff = Math.floor((Date.now() - ts) / 1000);
-        if (diff < 60) return 'Just now';
-        if (diff < 3600) return Math.floor(diff / 60) + 'm ago';
-        if (diff < 86400) return Math.floor(diff / 3600) + 'h ago';
-        if (diff < 604800) return Math.floor(diff / 86400) + 'd ago';
-        return new Date(ts).toLocaleDateString();
-      },
-
-      _lastPostTime: 0,
-      COOLDOWN_MS: 15000,
-      PROFANITY_LIST: ['fuck','shit','damn','bitch','ass','dick','bastard','crap','porn','sex','nude','kill','die'],
-
-      containsProfanity(text) {
-        const lower = (text || '').toLowerCase();
-        return this.PROFANITY_LIST.some(word => {
-          const regex = new RegExp('\\b' + word + '\\b', 'i');
-          return regex.test(lower);
-        });
-      },
-
-      validateInput(name, comment) {
-        name = (name || '').trim();
-        comment = (comment || '').trim();
-
-        if (name.length < 2 || name.length > 50) {
-          return { valid: false, error: 'Name must be 2-50 characters' };
-        }
-        if (comment.length < 3 || comment.length > 500) {
-          return { valid: false, error: 'Comment must be 3-500 characters' };
-        }
-        if (this.containsProfanity(name) || this.containsProfanity(comment)) {
-          return { valid: false, error: 'Please keep comments respectful.' };
-        }
-        const now = Date.now();
-        if (now - this._lastPostTime < this.COOLDOWN_MS) {
-          const wait = Math.ceil((this.COOLDOWN_MS - (now - this._lastPostTime)) / 1000);
-          return { valid: false, error: `Please wait ${wait}s before posting again.` };
-        }
-        return { valid: true };
-      },
-
-      async init() {
-        try {
-          const { getApps, initializeApp } = await import('https://www.gstatic.com/firebasejs/12.6.0/firebase-app.js');
-          const { getFirestore } = await import('https://www.gstatic.com/firebasejs/12.6.0/firebase-firestore.js');
-
-          const firebaseConfig = {
-            apiKey: "AIzaSyBUJLKrhR7gn4j8ET66QeGY3iaHBnvrOOs",
-            authDomain: "mblog-comments.firebaseapp.com",
-            projectId: "mblog-comments",
-            storageBucket: "mblog-comments.firebasestorage.app",
-            messagingSenderId: "252839486588",
-            appId: "1:252839486588:web:926991d46b9629b4c2d5f9"
-          };
-
-          const app = getApps().length ? getApps()[0] : initializeApp(firebaseConfig);
-          this.state.db = getFirestore(app);
-          this.state.isInitialized = true;
-
-          this.bindEvents();
-          await this.renderComments();
-        } catch (error) {
-          this.showError('Comments temporarily unavailable');
-        }
-      },
-
-      async getCommentCount() {
-        if (!this.state.db) return 0;
-        try {
-          const { doc, getDoc } = await import('https://www.gstatic.com/firebasejs/12.6.0/firebase-firestore.js');
-          const metaDoc = await getDoc(doc(this.state.db, 'meta', 'comments'));
-          return metaDoc.exists() ? (metaDoc.data().count || 0) : 0;
-        } catch (e) {
-          return 0;
-        }
-      },
-
-      async fetchComments() {
-        if (!this.state.isInitialized || !this.state.db) return [];
-
-        try {
-          const { collection, getDocs, query, orderBy } = await import('https://www.gstatic.com/firebasejs/12.6.0/firebase-firestore.js');
-
-          const q = query(
-            collection(this.state.db, 'comments'),
-            orderBy('createdAt', 'desc')
-          );
-
-          const snap = await getDocs(q);
-          this.state.commentCount = snap.size;
-          return snap.docs.map(d => ({ id: d.id, ...d.data() }));
-        } catch (error) {
-          return [];
-        }
-      },
-
-      async postComment(name, comment) {
-        if (!this.state.isInitialized || !this.state.db) {
-          throw new Error('Comments system unavailable');
-        }
-
-        const count = await this.getCommentCount();
-        if (count >= this.MAX_COMMENTS) {
-          throw new Error('Comments are full. Maximum 500 reached.');
-        }
-
-        const { collection, addDoc, doc, updateDoc, increment, runTransaction } = await import('https://www.gstatic.com/firebasejs/12.6.0/firebase-firestore.js');
-
-        await runTransaction(this.state.db, async (transaction) => {
-          const metaRef = doc(this.state.db, 'meta', 'comments');
-          const metaSnap = await transaction.get(metaRef);
-
-          const currentCount = metaSnap.exists() ? (metaSnap.data().count || 0) : 0;
-          if (currentCount >= this.MAX_COMMENTS) {
-            throw new Error('Comments are full. Maximum 500 reached.');
-          }
-
-          const commentRef = doc(collection(this.state.db, 'comments'));
-          transaction.set(commentRef, {
-            name: name.trim(),
-            comment: comment.trim(),
-            createdAt: Date.now()
-          });
-
-          if (metaSnap.exists()) {
-            transaction.update(metaRef, { count: increment(1) });
-          } else {
-            transaction.set(metaRef, { count: 1 });
-          }
-        });
-      },
-
-      async renderComments() {
-        const list = document.getElementById('comment-list');
-        const btn = document.getElementById('view-more-btn');
-        const form = document.getElementById('comment-form');
-
-        if (!list) return;
-
-        try {
-          const comments = await this.fetchComments();
-
-          if (form && this.state.commentCount >= this.MAX_COMMENTS) {
-            form.innerHTML = '<p class="comments-full">Comments are full (500/500). Thank you for participating!</p>';
-          }
-
-          if (!comments.length) {
-            list.innerHTML = '<p class="no-comments">No comments yet. Be the first! 💬</p>';
-            if (btn) btn.classList.add('hidden');
-            return;
-          }
-
-          const toShow = this.state.showAll ? comments : comments.slice(0, this.VISIBLE_COUNT);
-
-          list.innerHTML = toShow.map((c) => `
-            <div class="comment-item">
-              <div class="comment-avatar">${this.escapeHtml(c.name?.[0]?.toUpperCase() || '?')}</div>
-              <div class="comment-body">
-                <div class="comment-header">
-                  <span class="comment-name">${this.escapeHtml(c.name || 'Anonymous')}</span>
-                  <span class="comment-time">${this.formatTime(c.createdAt)}</span>
-                </div>
-                <p class="comment-text">${this.escapeHtml(c.comment || c.text || '')}</p>
-              </div>
-            </div>
-          `).join('');
-
-          if (btn) {
-            if (comments.length > this.VISIBLE_COUNT) {
-              btn.classList.remove('hidden');
-              btn.textContent = this.state.showAll
-                ? 'Show less'
-                : `View ${comments.length - this.VISIBLE_COUNT} more comments`;
-            } else {
-              btn.classList.add('hidden');
-            }
-          }
-        } catch (error) {
-          list.innerHTML = '<p class="no-comments">Unable to load comments</p>';
-        }
-      },
-
-      showError(message) {
-        const errorEl = document.getElementById('comment-error');
-        if (errorEl) {
-          errorEl.textContent = message;
-          errorEl.classList.remove('hidden');
-          setTimeout(() => errorEl.classList.add('hidden'), 5000);
-        }
-      },
-
-      clearError() {
-        const errorEl = document.getElementById('comment-error');
-        if (errorEl) errorEl.classList.add('hidden');
-      },
-
-      bindEvents() {
-        const viewMoreBtn = document.getElementById('view-more-btn');
-        const form = document.getElementById('comment-form');
-        const submitBtn = document.getElementById('submit-btn');
-
-        if (viewMoreBtn) {
-          viewMoreBtn.addEventListener('click', () => {
-            this.state.showAll = !this.state.showAll;
-            this.renderComments();
-          });
-        }
-
-        if (form) {
-          form.addEventListener('submit', async (e) => {
-            e.preventDefault();
-            this.clearError();
-
-            const nameInput = document.getElementById('comment-name');
-            const textInput = document.getElementById('comment-text');
-
-            if (!nameInput || !textInput) return;
-
-            const name = nameInput.value.trim();
-            const comment = textInput.value.trim();
-
-            const validation = this.validateInput(name, comment);
-            if (!validation.valid) {
-              this.showError(validation.error);
-              return;
-            }
-
-            if (submitBtn) {
-              submitBtn.disabled = true;
-              submitBtn.textContent = 'Posting...';
-            }
-
-            try {
-              await this.postComment(name, comment);
-              this._lastPostTime = Date.now();
-              nameInput.value = '';
-              textInput.value = '';
-              this.state.showAll = false;
-              await this.renderComments();
-            } catch (error) {
-              this.showError(error.message || 'Failed to post comment. Please try again.');
-            } finally {
-              if (submitBtn) {
-                submitBtn.disabled = false;
-                submitBtn.textContent = 'Publish';
-              }
-            }
-          });
-        }
-      }
-    };
-
-    CommentsModule.init();
   </script>
 </body>
 </html>
